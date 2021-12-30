@@ -19,8 +19,6 @@ public class GameManager
     private int gridSizeY = 30;
     private Cell[][] grid = new Cell[this.gridSizeX][this.gridSizeY];
 
-    private int tempX;
-    private int tempY;
     // Cell Variables
     private float cellSize = 10;
 
@@ -30,23 +28,21 @@ public class GameManager
         {
             for (int y = 0; y < gridSizeY; y++)
             {
-                grid[x][y] = new Cell(new Rectangle(x * cellSize, y * cellSize, cellSize, cellSize), x, y);
-                grid[x][y].getGraphic().setFill(Color.rgb(255,255,255));
-                grid[x][y].getGraphic().setStroke(Color.rgb(0,0,0));
+                grid[x][y] = new Cell(cellSize, x * cellSize, y * cellSize);
+                grid[x][y].setFill(Color.rgb(255,255,255));
+                grid[x][y].setStroke(Color.rgb(0,0,0));
 
-                tempX = x;
-                tempY = y;
-
-                grid[x][y].getGraphic().setOnMouseClicked(new EventHandler<MouseEvent>()
+                grid[x][y].setOnMouseClicked(new EventHandler<MouseEvent>()
                 {
                     @Override
                     public void handle(MouseEvent event)
                     {
-                        grid[tempX][tempY].ChangeState();
+                        ((Cell) event.getSource()).ChangeState();
+                        //grid[tempX][tempY].ChangeState();
                     }
                 });
 
-                root.getChildren().add(grid[x][y].getGraphic());
+                root.getChildren().add(grid[x][y]);
             }
         }
     }

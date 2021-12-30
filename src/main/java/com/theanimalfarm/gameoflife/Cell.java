@@ -2,19 +2,13 @@ package com.theanimalfarm.gameoflife;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Cell
+public class Cell extends Rectangle
 {
     private boolean alive;
-    private Rectangle graphic;
 
-    private float positionX;
-    private float positionY;
-
-    public Cell(Rectangle graphic, float positionX, float positionY)
+    public Cell(double cellSize, double positionX, double positionY)
     {
-        this.positionX = positionX;
-        this.positionY = positionY;
-        this.graphic = graphic;
+        super(positionX, positionY, cellSize, cellSize);
         this.alive = false;
     }
 
@@ -23,16 +17,11 @@ public class Cell
         if (alive)
         {
             alive = false;
-            graphic.setFill(Color.WHITE);
+            super.setFill(Color.WHITE);
             return;
         }
 
         alive = true;
-        graphic.setFill(Color.BLACK);
-    }
-
-    public Rectangle getGraphic()
-    {
-        return this.graphic;
+        super.setFill(Color.BLACK);
     }
 }
