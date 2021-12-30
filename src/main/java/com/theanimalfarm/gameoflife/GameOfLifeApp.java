@@ -2,21 +2,39 @@ package com.theanimalfarm.gameoflife;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
+import java.awt.*;
 
 public class GameOfLifeApp extends Application{
 
+    public GameManager gameManager = new GameManager();
     public static void main(String[] args) {
     launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
+        //Parent root = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
 
-        Scene scene = new Scene(root, 300, 300);
+        Group root = new Group();
+        gameManager.InitializeGame(root);
+
+        /*
+        Rectangle rec = new Rectangle(0,0,200,50);
+        Button myButton = new Button();
+        layout.getChildren().add(rec);
+        layout.getChildren().add(myButton);
+         */
+
+        Scene scene = new Scene(root, 600, 600);
 
         primaryStage.setTitle("Game of Life");
         primaryStage.setScene(scene);
