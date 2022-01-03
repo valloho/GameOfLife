@@ -22,7 +22,7 @@ public class GameOfLifeApp extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Parent root = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
+        Parent root2 = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
 
         Group root = new Group();
         gameManager.InitializeGame(root);
@@ -35,9 +35,12 @@ public class GameOfLifeApp extends Application{
          */
 
         Scene scene = new Scene(root, 600, 600);
+        //scene.setRoot(root2);
 
         primaryStage.setTitle("Game of Life");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+
 }
