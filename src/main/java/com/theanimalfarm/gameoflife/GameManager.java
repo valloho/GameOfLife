@@ -34,6 +34,8 @@ public class GameManager
     Button playButton;
     Button nextFrameButton;
 
+    //Gameplay
+    Timer timer;
 
     public void InitializeGame(Group root)
     {
@@ -118,9 +120,8 @@ public class GameManager
                 System.out.println("Hello World");
                 OnNextFrame();
             }
-        },1000, 1000);
+        },200, 200);
     }
-    Timer timer;
 
     private void OnNextFrame()
     {
