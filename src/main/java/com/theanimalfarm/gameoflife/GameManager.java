@@ -1,11 +1,16 @@
 package com.theanimalfarm.gameoflife;
 
-
+import javafx.application.Application;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class GameManager
 {
@@ -17,9 +22,7 @@ public class GameManager
     // Cell Variables
     private float cellSize = 10;
 
-
-
-    public void initializeGame(Group group)
+    public void InitializeGame(Group root)
     {
         for (int x = 0; x < gridSizeX; x++)
         {
@@ -39,10 +42,8 @@ public class GameManager
                     }
                 });
 
-                group.getChildren().add(grid[x][y]);
+                root.getChildren().add(grid[x][y]);
             }
         }
     }
-
-
 }
