@@ -15,17 +15,14 @@ import java.awt.*;
 
 public class GameOfLifeApp extends Application{
 
-    public GameManager gameManager = new GameManager();
+
     public static void main(String[] args) {
     launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //Parent root = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
-
-        Group root = new Group();
-        gameManager.InitializeGame(root);
+        Parent root = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
 
         /*
         Rectangle rec = new Rectangle(0,0,200,50);
@@ -34,7 +31,7 @@ public class GameOfLifeApp extends Application{
         layout.getChildren().add(myButton);
          */
 
-        Scene scene = new Scene(root, 600, 600);
+        Scene scene = new Scene(root);
 
         primaryStage.setTitle("Game of Life");
         primaryStage.setScene(scene);

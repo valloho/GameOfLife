@@ -7,6 +7,7 @@ public class Cell extends Rectangle
     private boolean alive;
     private boolean newState;
 
+
     private int cellIndexX;
     private int cellIndexY;
 
@@ -17,6 +18,7 @@ public class Cell extends Rectangle
         this.cellIndexY = cellIndexY;
         this.alive = false;
     }
+
 
     public boolean GetState()
     {
