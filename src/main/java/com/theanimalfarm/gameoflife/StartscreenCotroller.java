@@ -22,40 +22,53 @@ public class StartscreenCotroller implements Initializable {
     @FXML
     private Button nextButton;
 
-    // Grid Variables
+    // Grid variables
     private int gridSizeX = 50;
     private int gridSizeY = 30;
-    private Cell[][] grid;
-    // Cell Variables
+    private Cell[][] cellGrid;
+
+    // Cell variables
     private float cellSize = 10;
 
+    // Game management variables
     private boolean playing;
-
     Timer timer;
 
+    //Initialize the game by creating a grid containing all the cells
     @FXML
-    public void InitializeGame(Group group) {
-        //Create Grid
-        grid = new Cell[this.gridSizeX][this.gridSizeY];
-        for (int x = 0; x < gridSizeX; x++) {
-            for (int y = 0; y < gridSizeY; y++) {
-                grid[x][y] = new Cell(cellSize, x * cellSize, y * cellSize, x, y);
-                grid[x][y].setFill(Color.rgb(255, 255, 255));
-                grid[x][y].setStroke(Color.rgb(0, 0, 0));
+    public void InitializeGame(Group group)
+    {
+        // Create a cell grid by looping through the 2 dimensional array and creating new cells
+        cellGrid = new Cell[this.gridSizeX][this.gridSizeY];
 
-                grid[x][y].setOnMouseClicked(new EventHandler<MouseEvent>() {
+        for (int x = 0; x < gridSizeX; x++) // Loop through x-axis
+        {
+            for (int y = 0; y < gridSizeY; y++)  // Loop through y-axis
+            {
+                // Create and initialize new cell
+                cellGrid[x][y] = new Cell(cellSize, x * cellSize, y * cellSize, x, y);
+                cellGrid[x][y].setFill(Color.rgb(255, 255, 255));
+                cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
+
+                // Set an event to the cell so the state can be changed by clicking on it
+                cellGrid[x][y].setOnMouseClicked(new EventHandler<MouseEvent>()
+                {
                     @Override
-                    public void handle(MouseEvent event) {
+                    public void handle(MouseEvent event)
+                    {
                         ((Cell) event.getSource()).ChangeState();
                     }
                 });
-                group.getChildren().add(grid[x][y]);
+
+                // Add cell to the main group
+                group.getChildren().add(cellGrid[x][y]);
             }
         }
     }
 
     @FXML
-    public void playGame() {
+    public void playGame()
+    {
         playButton.setOnAction(new EventHandler<ActionEvent>()
         {
             @Override
@@ -106,18 +119,20 @@ public class StartscreenCotroller implements Initializable {
         },1000, 1000);
     }
 
+    // Jump to the next frame by calculating and setting the cells next state
     private void OnNextFrame()
     {
         //Calculate New Cell States
-        for (Cell[] cellX : grid)
+        for (Cell[] cellX : cellGrid)
         {
             for (Cell cell : cellX)
             {
-                cell.CalculateNewState(grid, gridSizeX, gridSizeY);
+                cell.CalculateNewState(cellGrid, gridSizeX, gridSizeY);
             }
         }
+
         //Set New Cell States
-        for (Cell[] cellX : grid)
+        for (Cell[] cellX : cellGrid)
         {
             for (Cell cell : cellX)
             {
@@ -130,7 +145,6 @@ public class StartscreenCotroller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         InitializeGame(group);
-
     }
 
 
