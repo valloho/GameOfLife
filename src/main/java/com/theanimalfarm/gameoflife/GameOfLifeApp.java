@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.stage.StageStyle;
 
 import java.awt.*;
 
@@ -23,16 +24,8 @@ public class GameOfLifeApp extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(this.getClass().getResource("/startscreen.fxml"));
-
-        /*
-        Rectangle rec = new Rectangle(0,0,200,50);
-        Button myButton = new Button();
-        layout.getChildren().add(rec);
-        layout.getChildren().add(myButton);
-         */
-
         Scene scene = new Scene(root);
-
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("Game of Life");
         primaryStage.setScene(scene);
         primaryStage.show();

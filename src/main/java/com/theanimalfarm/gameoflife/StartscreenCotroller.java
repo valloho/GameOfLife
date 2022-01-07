@@ -1,13 +1,21 @@
 package com.theanimalfarm.gameoflife;
 
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import javafx.util.Duration;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -21,6 +29,22 @@ public class StartscreenCotroller implements Initializable {
     private Button playButton;
     @FXML
     private Button nextButton;
+    @FXML
+    private Button backButton;
+    @FXML
+    private ImageView pause;
+    @FXML
+    private ImageView play;
+    @FXML
+    private ImageView exit;
+    @FXML
+    private ImageView min;
+    @FXML
+    private VBox slider;
+    @FXML
+    private Label menu;
+    @FXML
+    private Label menuClose;
 
     // Grid variables
     private int gridSizeX = 50;
@@ -66,41 +90,13 @@ public class StartscreenCotroller implements Initializable {
         }
     }
 
-    @FXML
-    public void playGame()
-    {
-        playButton.setOnAction(new EventHandler<ActionEvent>()
-        {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                OnPlay();
-            }
-        });
-    }
-
-    @FXML
-    public void nextFrame() {
-        nextButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event)
-            {
-                if (playing)
-                {
-                    return;
-                }
-                System.out.println("Next Step");
-                OnNextFrame();
-            }
-        });
-    }
-
-    private void OnPlay()
+    public void OnPlay()
     {
         if (playing)
         {
             //Stop playing
             this.playing = false;
+            playButton.setGraphic(play);
             System.out.println("Not Playing");
             timer.cancel();
             return;
@@ -108,6 +104,7 @@ public class StartscreenCotroller implements Initializable {
 
         //Start playing
         this.playing = true;
+        playButton.setGraphic(pause);
         System.out.println("Playing");
         timer = new Timer();
         timer.schedule(new TimerTask(){
@@ -120,7 +117,7 @@ public class StartscreenCotroller implements Initializable {
     }
 
     // Jump to the next frame by calculating and setting the cells next state
-    private void OnNextFrame()
+    public void OnNextFrame()
     {
         //Calculate New Cell States
         for (Cell[] cellX : cellGrid)
@@ -145,6 +142,65 @@ public class StartscreenCotroller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         InitializeGame(group);
+
+        //exit button
+        exit.setOnMouseClicked(event -> {
+            System.exit(0);
+        });
+        //minimize button
+        min.setOnMouseClicked(event -> {
+            Stage stage = (Stage) min.getScene().getWindow();
+            stage.setIconified(true);
+        });
+
+        playButton.setGraphic(play);
+
+        playButton.setOnMouseClicked(event -> {
+            OnPlay();
+        });
+
+        nextButton.setOnMouseClicked(event -> {
+            if (playing)
+            {
+                return;
+            }
+            System.out.println("Next Step");
+            OnNextFrame();
+        });
+
+        //menu slide
+        slider.setTranslateX(-250);
+
+        menu.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.5));
+            slide.setNode(slider);
+
+            slide.setToX(0);
+            slide.play();
+
+            slider.setTranslateX(-250);
+
+            slide.setOnFinished(event1 -> {
+                menu.setVisible(false);
+                menuClose.setVisible(true);
+            });
+        });
+
+        menuClose.setOnMouseClicked(event -> {
+            TranslateTransition slide = new TranslateTransition();
+            slide.setDuration(Duration.seconds(0.5));
+            slide.setNode(slider);
+
+            slide.setToX(-250);
+            slide.play();
+
+            slider.setTranslateX(0);
+
+            slide.setOnFinished(event1 -> {
+                menu.setVisible(true);
+            });
+        });
     }
 
 
