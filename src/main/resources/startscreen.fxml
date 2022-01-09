@@ -203,7 +203,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
+                        <Button fx:id = "loadButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
                            <padding>
                               <Insets left="20.0" />
                            </padding>
@@ -214,7 +214,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="SAVE" textFill="#177f97">
+                        <Button fx:id = "saveButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="SAVE" textFill="#177f97">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

@@ -32,6 +32,10 @@ public class StartscreenCotroller implements Initializable {
     @FXML
     private Button backButton;
     @FXML
+    private Button saveButton;
+    @FXML
+    private Button loadButton;
+    @FXML
     private ImageView pause;
     @FXML
     private ImageView play;
@@ -88,6 +92,18 @@ public class StartscreenCotroller implements Initializable {
                 group.getChildren().add(cellGrid[x][y]);
             }
         }
+        createLevel();
+    }
+    public void saveGrid(){
+        SaveLoad.saveGrid("arie",Cell.CellToArray(cellGrid));
+    }
+
+    private void createLevel(){
+        int[] arr = new int[1500];
+//        for(int i = 0 ;i < arr.length; i++){
+//            arr[i] = 0;
+//        }
+        SaveLoad.createBoard("arie",arr);
     }
 
     public void OnPlay()
@@ -200,6 +216,11 @@ public class StartscreenCotroller implements Initializable {
             slide.setOnFinished(event1 -> {
                 menu.setVisible(true);
             });
+        });
+
+        //saveButton
+        saveButton.setOnMouseClicked(event -> {
+            saveGrid();
         });
     }
 

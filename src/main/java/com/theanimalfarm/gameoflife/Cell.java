@@ -90,6 +90,44 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         this.newState = aliveNeighbourCells == 3; // A dead cell with exactly 3 neighbors is reborn
     }
 
+
+    // change Cell[][] to int[][]
+    public static int[][] CellToArray(Cell[][] cell) {
+        int[][] array = new int[cell.length][cell[0].length];
+        for (int i = 0; i < cell.length; i++) {
+            for (int j = 0; j < cell[i].length; j++) {
+                if (cell[i][j].GetState()) {
+                    array[i][j] = 1;
+                } else {
+                    array[i][j] = 0;
+                }
+                System.out.println(cell[i][j].GetState());
+
+            }
+        }
+
+        return array;
+    }
+
+    //change int[][] to Cell[][]
+    public static Cell[][] fileToGrid() {
+        int[][] array = SaveLoad.GetGrid("arie");
+        Cell[][] cell = new Cell[0][];
+        if (array != null) {
+            cell = new Cell[array.length][array[0].length];
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0 ; j < array[i].length;j++){
+                    if(array[i][j] == 1){
+                        cell[i][j].GetState();  // SetState(true)
+                    }else{
+                        cell[i][j].equals(false); //SetState(false)
+                    }
+                }
+            }
+        }
+        return cell;
+    }
+
     // Set the new state and change the color
     public void SetNewState()
     {
