@@ -97,6 +97,9 @@ public class StartscreenCotroller implements Initializable {
     public void saveGrid(){
         SaveLoad.saveGrid("arie",Cell.CellToArray(cellGrid));
     }
+    public void loadGrid(){
+        cellGrid=Cell.fileToGrid();
+    }
 
     private void createLevel(){
         int[] arr = new int[1500];
@@ -221,6 +224,11 @@ public class StartscreenCotroller implements Initializable {
         //saveButton
         saveButton.setOnMouseClicked(event -> {
             saveGrid();
+        });
+
+        //loadButton
+        loadButton.setOnMouseClicked(event -> {
+            loadGrid();
         });
     }
 

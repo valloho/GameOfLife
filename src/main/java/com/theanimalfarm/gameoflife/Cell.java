@@ -101,7 +101,7 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
                 } else {
                     array[i][j] = 0;
                 }
-                System.out.println(cell[i][j].GetState());
+                //System.out.println(cell[i][j].GetState());
 
             }
         }

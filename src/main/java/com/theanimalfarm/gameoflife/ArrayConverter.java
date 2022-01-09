@@ -22,6 +22,7 @@ public class ArrayConverter {
                 int index = i * arr.length + j;
                 if (index < arr.length*arr[0].length) {
                     OneDArray[index] = arr[i][j];
+                    //System.out.println(OneDArray[index]);
                 }
             }
         }
