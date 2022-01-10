@@ -99,10 +99,11 @@ public class StartscreenCotroller implements Initializable {
     }
     public void loadGrid(){
         cellGrid=Cell.fileToGrid();
+        //maybe run initializeGame game again to draw loaded board
     }
 
     private void createLevel(){
-        int[] arr = new int[1500];
+        int[] arr = new int[gridSizeY*gridSizeX];
 //        for(int i = 0 ;i < arr.length; i++){
 //            arr[i] = 0;
 //        }
@@ -231,6 +232,4 @@ public class StartscreenCotroller implements Initializable {
             loadGrid();
         });
     }
-
-
 }

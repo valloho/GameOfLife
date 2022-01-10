@@ -8,15 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SaveLoad {
-    public static void createFile() {
-        File file = new File("src/main/resources/testMe.txt");
-        try {
-            file.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    //creates a txt file at start of program
     public static void createBoard(String name, int[] idArray) {
         File kaine = new File("src/main/resources/" + name + ".txt");
         if (kaine.exists()) {
@@ -31,10 +23,11 @@ public class SaveLoad {
         }
     }
 
+    //writes a one dimensional integer array to a txt file
     private static void writeToFile(File file, int[] idArray) {
         try {
             PrintWriter print = new PrintWriter(file);
-            for (int i : idArray) {
+            for (int i = 0 ;i < idArray.length; i++) {
                 print.println(idArray[i]);
             }
             print.close();
@@ -43,6 +36,7 @@ public class SaveLoad {
         }
     }
 
+    // checks if file exists and calls a method that changes a two-dimensional integer array to a one dimensional integer array
     public static void saveGrid(String name,int[][] idArr){
         File gridFile = new File("src/main/resources/" + name + ".txt");
         if (gridFile.exists()){
@@ -52,6 +46,8 @@ public class SaveLoad {
         }
     }
 
+    //reads information of a file and writes it to an arraylist
+    //returns arraylist
     private static ArrayList<Integer> readFromFile(File emil) {
         ArrayList<Integer> list = new ArrayList<>();
         try {
@@ -66,6 +62,8 @@ public class SaveLoad {
         return list;
     }
 
+    // gets arraylist from readFromFile and changes it to a two-dimensional integer array
+    //returns two-dimensional integer array
     public static int[][] GetGrid(String name) {
         File gridFile = new File("src/main/resources/" + name + ".txt");
         if (gridFile.exists()) {
