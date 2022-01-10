@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -46,6 +47,7 @@ public class StartscreenCotroller implements Initializable {
     @FXML
     private Label menuClose;
 
+
     // Grid variables
     private int gridSizeX = 50;
     private int gridSizeY = 30;
@@ -71,8 +73,8 @@ public class StartscreenCotroller implements Initializable {
             {
                 // Create and initialize new cell
                 cellGrid[x][y] = new Cell(cellSize, x * cellSize, y * cellSize, x, y);
-                cellGrid[x][y].setFill(Color.rgb(255, 255, 255));
-                cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
+                cellGrid[x][y].setFill(Color.WHITE);
+                cellGrid[x][y].setStroke(Color.BLACK);
 
                 // Set an event to the cell so the state can be changed by clicking on it
                 cellGrid[x][y].setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -137,6 +139,7 @@ public class StartscreenCotroller implements Initializable {
             }
         }
     }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

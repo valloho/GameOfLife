@@ -23,6 +23,7 @@
     -fx-background-color: #062026;
     -fx-background-opacity: 50%;
 }
+
 .menu-item .label {
     -fx-text-fill: white;
 }
