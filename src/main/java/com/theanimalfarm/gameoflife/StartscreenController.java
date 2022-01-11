@@ -1,18 +1,15 @@
 package com.theanimalfarm.gameoflife;
 
 import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -21,7 +18,7 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class StartscreenCotroller implements Initializable {
+public class StartscreenController implements Initializable {
 
     @FXML
     private Group group;
@@ -49,6 +46,25 @@ public class StartscreenCotroller implements Initializable {
     private Label menu;
     @FXML
     private Label menuClose;
+    @FXML
+    private MenuItem grid50_30;
+    @FXML
+    private MenuItem grid25_15;
+    @FXML
+    private MenuItem speed1;
+    @FXML
+    private MenuItem speed0_5;
+    @FXML
+    private MenuItem speed0_1;
+    @FXML
+    private MenuItem colorBlack;
+    @FXML
+    private MenuItem colorBlue;
+    @FXML
+    private MenuItem colorGreen;
+    @FXML
+    private MenuItem colorRed;
+
 
     // Grid variables
     private int temp_gridSizeX = 50;
@@ -56,16 +72,16 @@ public class StartscreenCotroller implements Initializable {
     private Cell[][] cellGrid;
 
     // Cell variables
-    private float cellSize = 10;
+    private float temp_cellSize = 10;
 
     // Game management variables
     private boolean playing;
     private Timer timer;
-    private int gameSpeed = 100;
+    private int gameSpeed = 1000;
 
     //Initialize the game by creating a grid containing all the cells
     @FXML
-    public void InitializeGame(Group group, int gridSizeX, int gridSizeY)
+    public void InitializeGame(Group group, int gridSizeX, int gridSizeY, float cellSize)
     {
         // Create a cell grid by looping through the 2 dimensional array and creating new cells
         cellGrid = new Cell[gridSizeX][gridSizeY];
@@ -80,13 +96,8 @@ public class StartscreenCotroller implements Initializable {
                 cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
 
                 // Set an event to the cell so the state can be changed by clicking on it
-                cellGrid[x][y].setOnMouseClicked(new EventHandler<MouseEvent>()
-                {
-                    @Override
-                    public void handle(MouseEvent event)
-                    {
-                        ((Cell) event.getSource()).ChangeState();
-                    }
+                cellGrid[x][y].setOnMouseClicked(event -> {
+                    ((Cell) event.getSource()).ChangeState();
                 });
 
                 // Add cell to the main group
@@ -113,7 +124,7 @@ public class StartscreenCotroller implements Initializable {
         }
     }
 
-    public void SetGridSize(int gridSizeX, int gridSizeY)
+    public void SetGridSize(int gridSizeX, int gridSizeY, float cellSize)
     {
         for (Cell[] cellX : cellGrid)
         {
@@ -123,7 +134,7 @@ public class StartscreenCotroller implements Initializable {
             }
         }
 
-        this.InitializeGame(group, gridSizeX, gridSizeY);
+        this.InitializeGame(group, gridSizeX, gridSizeY, cellSize);
     }
 
     public void saveGrid(){
@@ -203,46 +214,21 @@ public class StartscreenCotroller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        InitializeGame(group, temp_gridSizeX, temp_gridSizeY);
+        InitializeGame(group, temp_gridSizeX, temp_gridSizeY, temp_cellSize);
 
-        //exit button
+        //Exit Icon
         exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
 
-        //minimize button
+        //Minimize Icon
         min.setOnMouseClicked(event -> {
             Stage stage = (Stage) min.getScene().getWindow();
             stage.setIconified(true);
         });
 
-        playButton.setGraphic(play);
-
-        playButton.setOnMouseClicked(event -> {
-            OnPlay();
-        });
-
-        nextButton.setOnMouseClicked(event -> {
-            if (playing)
-            {
-                return;
-            }
-            System.out.println("Next Step");
-            OnNextFrame();
-        });
-
-        backButton.setOnMouseClicked(event -> {
-            if (playing)
-            {
-                return;
-            }
-            System.out.println("Next Step");
-            OnPreviousFrame();
-        });
-
-        //menu slide
+        //Menu - Slider
         slider.setTranslateX(-250);
-
         menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.5));
@@ -258,7 +244,6 @@ public class StartscreenCotroller implements Initializable {
                 menuClose.setVisible(true);
             });
         });
-
         menuClose.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.5));
@@ -274,14 +259,71 @@ public class StartscreenCotroller implements Initializable {
             });
         });
 
-        //saveButton
+        //Gridsize Menu
+        grid50_30.setOnAction(event -> {
+            SetGridSize(50,30, 10);
+        });
+        grid25_15.setOnAction(event -> {
+            SetGridSize(25,15, 20);
+        });
+
+        //Speed Menu
+        speed1.setOnAction(event -> {
+            SetSpeed(1000);
+        });
+        speed0_5.setOnAction(event -> {
+            SetSpeed(500);
+        });
+        speed0_1.setOnAction(event -> {
+            SetSpeed(100);
+        });
+
+        //Color Menu
+        colorBlack.setOnAction(event -> {
+            SetColor(Color.BLACK);
+        });
+        colorBlue.setOnAction(event -> {
+            SetColor(Color.BLUE);
+        });
+        colorGreen.setOnAction(event -> {
+            SetColor(Color.GREEN);
+        });
+        colorRed.setOnAction(event -> {
+            SetColor(Color.RED);
+        });
+
+        //Save
         saveButton.setOnMouseClicked(event -> {
             saveGrid();
         });
 
-        //loadButton
+        //Load
         loadButton.setOnMouseClicked(event -> {
             loadGrid();
+        });
+
+        //Play|Pause Button
+        playButton.setGraphic(play);
+        playButton.setOnMouseClicked(event -> {
+            OnPlay();
+        });
+
+        //Next Generation
+        nextButton.setOnMouseClicked(event -> {
+            if (playing)
+            {
+                return;
+            }
+            OnNextFrame();
+        });
+
+        //Previous Generation
+        backButton.setOnMouseClicked(event -> {
+            if (playing)
+            {
+                return;
+            }
+            OnPreviousFrame();
         });
     }
 }

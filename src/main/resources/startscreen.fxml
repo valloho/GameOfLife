@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.theanimalfarm.gameoflife.StartscreenCotroller">
+<AnchorPane fx:id="ap" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.theanimalfarm.gameoflife.StartscreenController">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -161,8 +161,8 @@
                      <children>
                         <MenuButton fx:id="gridMenu" alignment="BASELINE_LEFT" cache="true" contentDisplay="BOTTOM" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="GRIDSIZE" textFill="#177f97">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="50x30" />
-                            <MenuItem fx:id="gridItem" mnemonicParsing="false" text="25x15" />
+                            <MenuItem fx:id="grid50_30" mnemonicParsing="false" text="50x30" />
+                            <MenuItem fx:id="grid25_15" mnemonicParsing="false" text="25x15" />
                           </items>
                            <VBox.margin>
                               <Insets top="140.0" />
@@ -179,8 +179,9 @@
                         </MenuButton>
                         <MenuButton fx:id="speedMenu" alignment="BASELINE_LEFT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="SPEED" textFill="#177f97">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="1sec/frame" />
-                            <MenuItem mnemonicParsing="false" text="0.5sec/frame" />
+                            <MenuItem fx:id="speed1" mnemonicParsing="false" text="1sec/frame" />
+                            <MenuItem fx:id="speed0_5" mnemonicParsing="false" text="0.5sec/frame" />
+                              <MenuItem fx:id="speed0_1" mnemonicParsing="false" text="0.1sec/frame" />
                           </items>
                            <font>
                               <Font name="Eras Bold ITC" size="14.0" />
@@ -191,10 +192,10 @@
                         </MenuButton>
                         <MenuButton fx:id="colorMenu" alignment="BASELINE_LEFT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="COLOR" textFill="#177f97">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Black" />
-                            <MenuItem mnemonicParsing="false" text="Blue" />
-                              <MenuItem mnemonicParsing="false" text="Green" />
-                              <MenuItem mnemonicParsing="false" text="Red" />
+                            <MenuItem fx:id="colorBlack" mnemonicParsing="false" text="Black" />
+                            <MenuItem fx:id="colorBlue" mnemonicParsing="false" text="Blue" />
+                              <MenuItem fx:id="colorGreen" mnemonicParsing="false" text="Green" />
+                              <MenuItem fx:id="colorRed" mnemonicParsing="false" text="Red" />
                           </items>
                            <font>
                               <Font name="Eras Bold ITC" size="14.0" />
