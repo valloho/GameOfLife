@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -51,14 +52,13 @@ public class StartscreenCotroller implements Initializable {
     @FXML
     private Label menuClose;
 
-
     // Grid variables
-    private int gridSizeX = 50;
-    private int gridSizeY = 30;
+    private int gridSizeX = 50; //25
+    private int gridSizeY = 30; //15
     private Cell[][] cellGrid;
 
     // Cell variables
-    private float cellSize = 10;
+    private float cellSize = 10; //20
 
     // Game management variables
     private boolean playing;
@@ -157,6 +157,10 @@ public class StartscreenCotroller implements Initializable {
                 cell.SetNewState();
             }
         }
+    }
+
+    public void ChangeColor(){
+
     }
 
 

@@ -159,10 +159,10 @@
                   </Label>
                   <VBox fx:id="slider" prefHeight="575.0" prefWidth="250.0" style="-fx-background-color: #0B404C; -fx-background-radius: 0 10 10 0;" AnchorPane.bottomAnchor="25.0" AnchorPane.topAnchor="50.0">
                      <children>
-                        <MenuButton alignment="BASELINE_LEFT" cache="true" contentDisplay="BOTTOM" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="GRIDSIZE" textFill="#177f97">
+                        <MenuButton fx:id="gridMenu" alignment="BASELINE_LEFT" cache="true" contentDisplay="BOTTOM" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="GRIDSIZE" textFill="#177f97">
                           <items>
                             <MenuItem mnemonicParsing="false" text="50x30" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                            <MenuItem fx:id="gridItem" mnemonicParsing="false" text="25x15" />
                           </items>
                            <VBox.margin>
                               <Insets top="140.0" />
@@ -177,10 +177,10 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <MenuButton alignment="BASELINE_LEFT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="SPEED" textFill="#177f97">
+                        <MenuButton fx:id="speedMenu" alignment="BASELINE_LEFT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="SPEED" textFill="#177f97">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                            <MenuItem mnemonicParsing="false" text="1sec/frame" />
+                            <MenuItem mnemonicParsing="false" text="0.5sec/frame" />
                           </items>
                            <font>
                               <Font name="Eras Bold ITC" size="14.0" />
@@ -189,7 +189,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <MenuButton alignment="BASELINE_LEFT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="COLOR" textFill="#177f97">
+                        <MenuButton fx:id="colorMenu" alignment="BASELINE_LEFT" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="COLOR" textFill="#177f97">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Black" />
                             <MenuItem mnemonicParsing="false" text="Blue" />
@@ -203,7 +203,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <Button fx:id = "loadButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
+                        <Button fx:id="loadButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
                            <padding>
                               <Insets left="20.0" />
                            </padding>
@@ -214,7 +214,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id = "saveButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="SAVE" textFill="#177f97">
+                        <Button fx:id="saveButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="SAVE" textFill="#177f97">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>

@@ -14,22 +14,24 @@
 .menu-button {
     -fx-background-color: linear-gradient(#093039,#062026);
     -fx-background-radius: 50 0 0 50;
-
 }
 .menu-button .arrow {
     -fx-background-color: #177F97;
 }
 .menu-button:hover {
     -fx-background-color: #062026;
-    -fx-background-opacity: 50%;
 }
 
 .menu-item .label {
     -fx-text-fill: white;
+    -fx-font-family: "Eras Demi ITC";
+    -fx-font-size: 14;
 }
 .menu-item:focused {
-     -fx-background-color: darkgray;
+    -fx-background-color: #062026;
+    -fx-opacity: 0.5;
 }
 .context-menu {
-    -fx-background-color: transparent;
+    -fx-background-color: #0B404C;
+    -fx-background-radius: 0 10 10 0;
 }
