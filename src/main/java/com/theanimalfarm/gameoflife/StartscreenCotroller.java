@@ -8,8 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -53,23 +51,24 @@ public class StartscreenCotroller implements Initializable {
     private Label menuClose;
 
     // Grid variables
-    private int gridSizeX = 50; //25
-    private int gridSizeY = 30; //15
+    private int temp_gridSizeX = 50;
+    private int temp_gridSizeY = 30;
     private Cell[][] cellGrid;
 
     // Cell variables
-    private float cellSize = 10; //20
+    private float cellSize = 10;
 
     // Game management variables
     private boolean playing;
-    Timer timer;
+    private Timer timer;
+    private int gameSpeed = 100;
 
     //Initialize the game by creating a grid containing all the cells
     @FXML
-    public void InitializeGame(Group group)
+    public void InitializeGame(Group group, int gridSizeX, int gridSizeY)
     {
         // Create a cell grid by looping through the 2 dimensional array and creating new cells
-        cellGrid = new Cell[this.gridSizeX][this.gridSizeY];
+        cellGrid = new Cell[gridSizeX][gridSizeY];
 
         for (int x = 0; x < gridSizeX; x++) // Loop through x-axis
         {
@@ -77,8 +76,8 @@ public class StartscreenCotroller implements Initializable {
             {
                 // Create and initialize new cell
                 cellGrid[x][y] = new Cell(cellSize, x * cellSize, y * cellSize, x, y);
-                cellGrid[x][y].setFill(Color.WHITE);
-                cellGrid[x][y].setStroke(Color.BLACK);
+                cellGrid[x][y].setFill(Color.rgb(255, 255, 255));
+                cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
 
                 // Set an event to the cell so the state can be changed by clicking on it
                 cellGrid[x][y].setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -94,8 +93,39 @@ public class StartscreenCotroller implements Initializable {
                 group.getChildren().add(cellGrid[x][y]);
             }
         }
-        createLevel();
+
+        //createLevel(gridSizeX, gridSizeY);
     }
+
+    public void SetSpeed(int delayInMS)
+    {
+        gameSpeed = delayInMS;
+    }
+
+    public void SetColor(Color color)
+    {
+        for (Cell[] cells:cellGrid)
+        {
+            for (Cell cell:cells)
+            {
+                cell.SetCellColor(color);
+            }
+        }
+    }
+
+    public void SetGridSize(int gridSizeX, int gridSizeY)
+    {
+        for (Cell[] cellX : cellGrid)
+        {
+            for (Cell cell : cellX)
+            {
+                group.getChildren().remove(cell);
+            }
+        }
+
+        this.InitializeGame(group, gridSizeX, gridSizeY);
+    }
+
     public void saveGrid(){
         SaveLoad.saveGrid("arie",Cell.CellToArray(cellGrid));
     }
@@ -104,7 +134,8 @@ public class StartscreenCotroller implements Initializable {
         //maybe run initializeGame game again to draw loaded board
     }
 
-    private void createLevel(){
+    private void createLevel(int gridSizeY, int gridSizeX)
+    {
         int[] arr = new int[gridSizeY*gridSizeX];
 //        for(int i = 0 ;i < arr.length; i++){
 //            arr[i] = 0;
@@ -119,7 +150,6 @@ public class StartscreenCotroller implements Initializable {
             //Stop playing
             this.playing = false;
             playButton.setGraphic(play);
-            System.out.println("Not Playing");
             timer.cancel();
             return;
         }
@@ -127,15 +157,13 @@ public class StartscreenCotroller implements Initializable {
         //Start playing
         this.playing = true;
         playButton.setGraphic(pause);
-        System.out.println("Playing");
         timer = new Timer();
         timer.schedule(new TimerTask(){
             @Override
             public void run(){
-                System.out.println("Hello World");
                 OnNextFrame();
             }
-        },1000, 1000);
+        },gameSpeed, gameSpeed);
     }
 
     // Jump to the next frame by calculating and setting the cells next state
@@ -146,7 +174,7 @@ public class StartscreenCotroller implements Initializable {
         {
             for (Cell cell : cellX)
             {
-                cell.CalculateNewState(cellGrid, gridSizeX, gridSizeY);
+                cell.CalculateNewState(cellGrid, temp_gridSizeX, temp_gridSizeY);
             }
         }
 
@@ -160,20 +188,28 @@ public class StartscreenCotroller implements Initializable {
         }
     }
 
-    public void ChangeColor(){
-
+    public void OnPreviousFrame()
+    {
+        //Calculate New Cell States
+        for (Cell[] cellX : cellGrid)
+        {
+            for (Cell cell : cellX)
+            {
+                cell.SetLastState();
+            }
+        }
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        InitializeGame(group);
+        InitializeGame(group, temp_gridSizeX, temp_gridSizeY);
 
         //exit button
         exit.setOnMouseClicked(event -> {
             System.exit(0);
         });
+
         //minimize button
         min.setOnMouseClicked(event -> {
             Stage stage = (Stage) min.getScene().getWindow();
@@ -193,6 +229,15 @@ public class StartscreenCotroller implements Initializable {
             }
             System.out.println("Next Step");
             OnNextFrame();
+        });
+
+        backButton.setOnMouseClicked(event -> {
+            if (playing)
+            {
+                return;
+            }
+            System.out.println("Next Step");
+            OnPreviousFrame();
         });
 
         //menu slide

@@ -2,6 +2,10 @@ package com.theanimalfarm.gameoflife;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 public class Cell extends Rectangle // Cell extends from rectangle, so it can have a "onMouseClick" event
 {
     // Cell state variables
@@ -11,6 +15,11 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
     // Cell index variables
     private int cellIndexX;
     private int cellIndexY;
+    private Color cellColor = Color.BLACK;
+
+    // Last cell states
+    private Stack<Boolean> lastCellStates = new Stack<>();
+    private static int maxCellStack = 20;
 
     // Constructor to initialize a cell
     public Cell(double cellSize, double positionX, double positionY, int cellIndexX, int cellIndexY)
@@ -21,11 +30,52 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         this.alive = false;
     }
 
+    //---- GETTER ------------------------------------------------------------------------------------------------------
+
     // Get the current state of a cell (dead/alive)
     public boolean GetState()
     {
         return alive;
     }
+
+    //---- SETTER ------------------------------------------------------------------------------------------------------
+    public void SetLastState()
+    {
+        if (lastCellStates.stream().count() < 1)
+        {
+            System.out.println("Not more steps available!");
+            return;
+        }
+        newState = lastCellStates.pop();
+
+        alive = newState;
+        ChangeGraphic(alive);
+    }
+
+    public void SetCellColor(Color cellColor)
+    {
+        this.cellColor = cellColor;
+
+        if (alive)
+        {
+            this.setFill(cellColor);
+        }
+    }
+
+    // Set the new state and change the color
+    public void SetNewState()
+    {
+        lastCellStates.push(alive);
+        if (lastCellStates.stream().count() > maxCellStack)
+        {
+            lastCellStates.remove(0);
+        }
+
+        alive = newState;
+        ChangeGraphic(alive);
+    }
+
+    //---- CHANGE CELL -------------------------------------------------------------------------------------------------
 
     // Change the current state of a cell
     public void ChangeState()
@@ -34,13 +84,13 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         {
             // Set cell to dead if cell was alive
             alive = false;
-            super.setFill(Color.WHITE);
+            ChangeGraphic(false);
             return;
         }
 
         // Set cell to alive if cell was dead
         alive = true;
-        super.setFill(Color.BLACK);
+        ChangeGraphic(true);
     }
 
     // Change cell graphic to current cell state
@@ -49,13 +99,15 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         if (alive)
         {
             // Change color to black if cell is alive
-            super.setFill(Color.BLACK);
+            super.setFill(cellColor);
             return;
         }
 
         // Change color to white if cell is dead
         super.setFill(Color.WHITE);
     }
+
+    //---- CALCULATIONS ------------------------------------------------------------------------------------------------
 
     // Calculate new cell state (state after one iteration)
     public void CalculateNewState(Cell[][] cells, int gridSizeX, int gridSizeY)
@@ -89,7 +141,6 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
 
         this.newState = aliveNeighbourCells == 3; // A dead cell with exactly 3 neighbors is reborn
     }
-
 
     // change Cell[][] to int[][]
     public static int[][] CellToArray(Cell[][] cell) {
@@ -126,12 +177,5 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
             }
         }
         return cell;
-    }
-
-    // Set the new state and change the color
-    public void SetNewState()
-    {
-        alive = newState;
-        ChangeGraphic(alive);
     }
 }
