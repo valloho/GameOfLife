@@ -22,6 +22,11 @@ Furthermore, the *Game of Life* is a **two-dimensional grid of square cells**, e
 
 
 
+An example of cell interaction:
+
+
+ ![Game_of_life_pulsar](https://user-images.githubusercontent.com/92008916/149153657-7384faf9-ad97-4561-b5a1-319abdf5d1b3.gif)
+
 ### Source
 Further information regarding [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) and its origin.
 
