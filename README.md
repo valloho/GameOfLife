@@ -29,6 +29,7 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 ## How to start our game
 ### Step 1:
 After you have copied our repository link in IntelliJ you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
+
 <img width="357" alt="Bildschirmfoto 2022-01-12 um 11 53 41" src="https://user-images.githubusercontent.com/92008916/149127862-6cb2f2d4-5f45-4849-83b6-8061516ebd50.png">
 
 
