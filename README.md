@@ -27,16 +27,18 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 
 # More details about our project
 ## How to start our game
-* After you have copied our repository link in IntelliJ you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
+### Step 1:
+After you have copied our repository link in IntelliJ you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
 <img width="357" alt="Bildschirmfoto 2022-01-12 um 11 53 41" src="https://user-images.githubusercontent.com/92008916/149127862-6cb2f2d4-5f45-4849-83b6-8061516ebd50.png">
 
 
-* Now you can play our fabulous game!
+Now you can play our fabulous game!
 
 
 <img width="801" alt="Bildschirmfoto 2022-01-12 um 11 41 08" src="https://user-images.githubusercontent.com/92008916/149126323-b28f4481-e9b2-4740-ab19-fe8538b45a47.png">
 
-* After you see this window (previous Screenshot), you have the opportunity to make some personal settings by clicking on ***Menu***:
+### Step 2:
+After you see this window (previous Screenshot), you have the opportunity to make some personal settings by clicking on ***Menu***:
 
    
    - **Gridsize** - choose between two different grid sizes (50x30, 25x15)
@@ -45,8 +47,13 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
    - **Load**
    - **Save**
    
-   -> The settings *Gridsize 25x15*, *Load* and *Save* still need to be implemented in the game!
+   -> Attention: The settings *Gridsize 25x15*, *Load* and *Save* still need to be implemented in the game!
    
    Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
+   
+### Step 3:
+
+   * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*
+   * Now click on the *Play Button* to start the game and watch how the cells change. If you would like to see only a single next generation, press the *Forward Button*. If you would like to see the previous generation, press the *Back Button*.
 
 
