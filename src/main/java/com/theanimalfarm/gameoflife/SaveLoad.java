@@ -7,7 +7,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SaveLoad {
+public class SaveLoad
+{
     //creates a txt file at start of program
     public static void createBoard(String name, int[] idArray) {
         File kaine = new File("src/main/resources/" + name + ".txt");
@@ -64,16 +65,69 @@ public class SaveLoad {
 
     // gets arraylist from readFromFile and changes it to a two-dimensional integer array
     //returns two-dimensional integer array
-    public static int[][] GetGrid(String name) {
+    public static int[][] GetGrid(String name) 
+    {
         File gridFile = new File("src/main/resources/" + name + ".txt");
-        if (gridFile.exists()) {
+        
+        if (gridFile.exists()) 
+        {
             ArrayList<Integer> list = readFromFile(gridFile);
             return ArrayConverter.listTo2D(list,50,30);
-        } else {
+        } else 
+        {
             System.out.println("File " + name + "does not exist!");
             return null;
         }
 
+    }
+
+    // change Cell[][] to int[][]
+    public static int[][] CellToInt(Cell[][] cell)
+    {
+        int[][] array = new int[cell.length][cell[0].length];
+
+        for (int i = 0; i < cell.length; i++)
+        {
+            for (int j = 0; j < cell[i].length; j++)
+            {
+                if (cell[i][j].GetState())
+                {
+                    array[i][j] = 1;
+                } else
+                {
+                    array[i][j] = 0;
+                }
+                //System.out.println(cell[i][j].GetState());
+            }
+        }
+
+        return array;
+    }
+
+    //change int[][] to Cell[][]
+    public static Cell[][] IntToCell()
+    {
+        int[][] array = SaveLoad.GetGrid("arie");
+        Cell[][] cell = new Cell[0][];
+
+        if (array != null)
+        {
+            cell = new Cell[array.length][array[0].length];
+
+            for (int i = 0; i < array.length; i++)
+            {
+                for (int j = 0 ; j < array[i].length;j++)
+                {
+                    if(array[i][j] == 1){
+                        cell[i][j].GetState();  // SetState(true)
+                    }else
+                    {
+                        cell[i][j].equals(false); //SetState(false)
+                    }
+                }
+            }
+        }
+        return cell;
     }
 }
 

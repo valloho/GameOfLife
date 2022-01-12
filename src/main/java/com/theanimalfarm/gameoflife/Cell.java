@@ -1,27 +1,45 @@
 package com.theanimalfarm.gameoflife;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
-public class Cell extends Rectangle // Cell extends from rectangle, so it can have a "onMouseClick" event
+/**
+ * A cell object is one tiny rectangle that can either be alive or dead.
+ * Cell extends from rectangle, so it has a visual representation and can have an "onMouseClick" event.
+ */
+public class Cell extends Rectangle
 {
-    // Cell state variables
+    //region VARIABLES -------------------------------------------------------------------------------------------------
+    /**
+     * Cell state variables
+     */
     private boolean alive;
     private boolean newState;
 
-    // Cell index variables
+    /**
+     * Cell index variables
+     */
     private int cellIndexX;
     private int cellIndexY;
     private Color cellColor = Color.BLACK;
 
-    // Last cell states
+    /**
+     * Last cell states
+     */
     private Stack<Boolean> lastCellStates = new Stack<>();
     private static int maxCellStack = 20;
+    //endregion
 
-    // Constructor to initialize a cell
+    //region CONSTRUCTOR -----------------------------------------------------------------------------------------------
+
+    /**
+     * Constructor to initialize a cell
+     * @param cellSize
+     * @param positionX
+     * @param positionY
+     * @param cellIndexX
+     * @param cellIndexY
+     */
     public Cell(double cellSize, double positionX, double positionY, int cellIndexX, int cellIndexY)
     {
         super(positionX, positionY, cellSize, cellSize);
@@ -29,16 +47,25 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         this.cellIndexY = cellIndexY;
         this.alive = false;
     }
+    //endregion
 
-    //---- GETTER ------------------------------------------------------------------------------------------------------
+    //region GETTER ----------------------------------------------------------------------------------------------------
 
-    // Get the current state of a cell (dead/alive)
+    /**
+     * Get the current state of a cell (dead/alive)
+     * @return boolean
+     */
     public boolean GetState()
     {
         return alive;
     }
+    //endregion
 
-    //---- SETTER ------------------------------------------------------------------------------------------------------
+    //region SETTER ----------------------------------------------------------------------------------------------------
+
+    /**
+     * Set the state of the cell to the state of the previous frame
+     */
     public void SetLastState()
     {
         if (lastCellStates.stream().count() < 1)
@@ -46,12 +73,17 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
             System.out.println("Not more steps available!");
             return;
         }
+
         newState = lastCellStates.pop();
 
         alive = newState;
         ChangeGraphic(alive);
     }
 
+    /**
+     * Resets the color of the cell if it's alive
+     * @param cellColor
+     */
     public void SetCellColor(Color cellColor)
     {
         this.cellColor = cellColor;
@@ -62,7 +94,9 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         }
     }
 
-    // Set the new state and change the color
+    /**
+     * Set the new state and change the color
+     */
     public void SetNewState()
     {
         lastCellStates.push(alive);
@@ -74,10 +108,13 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         alive = newState;
         ChangeGraphic(alive);
     }
+    //endregion
 
-    //---- CHANGE CELL -------------------------------------------------------------------------------------------------
+    //region PUBLIC METHODS --------------------------------------------------------------------------------------------
 
-    // Change the current state of a cell
+    /**
+     * Change the current state of the cell to the opposite state
+     */
     public void ChangeState()
     {
         if (alive)
@@ -93,10 +130,13 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         ChangeGraphic(true);
     }
 
-    // Change cell graphic to current cell state
-    public void ChangeGraphic(boolean alive)
+    /**
+     * Change cell graphic to current cell state
+     * @param cellState
+     */
+    public void ChangeGraphic(boolean cellState)
     {
-        if (alive)
+        if (cellState)
         {
             // Change color to black if cell is alive
             super.setFill(cellColor);
@@ -107,9 +147,12 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
         super.setFill(Color.WHITE);
     }
 
-    //---- CALCULATIONS ------------------------------------------------------------------------------------------------
-
-    // Calculate new cell state (state after one iteration)
+    /**
+     * Calculate new cell state (state of next frame)
+     * @param cells
+     * @param gridSizeX
+     * @param gridSizeY
+     */
     public void CalculateNewState(Cell[][] cells, int gridSizeX, int gridSizeY)
     {
         int aliveNeighbourCells = 0;
@@ -141,41 +184,5 @@ public class Cell extends Rectangle // Cell extends from rectangle, so it can ha
 
         this.newState = aliveNeighbourCells == 3; // A dead cell with exactly 3 neighbors is reborn
     }
-
-    // change Cell[][] to int[][]
-    public static int[][] CellToArray(Cell[][] cell) {
-        int[][] array = new int[cell.length][cell[0].length];
-        for (int i = 0; i < cell.length; i++) {
-            for (int j = 0; j < cell[i].length; j++) {
-                if (cell[i][j].GetState()) {
-                    array[i][j] = 1;
-                } else {
-                    array[i][j] = 0;
-                }
-                //System.out.println(cell[i][j].GetState());
-
-            }
-        }
-
-        return array;
-    }
-
-    //change int[][] to Cell[][]
-    public static Cell[][] fileToGrid() {
-        int[][] array = SaveLoad.GetGrid("arie");
-        Cell[][] cell = new Cell[0][];
-        if (array != null) {
-            cell = new Cell[array.length][array[0].length];
-            for (int i = 0; i < array.length; i++) {
-                for (int j = 0 ; j < array[i].length;j++){
-                    if(array[i][j] == 1){
-                        cell[i][j].GetState();  // SetState(true)
-                    }else{
-                        cell[i][j].equals(false); //SetState(false)
-                    }
-                }
-            }
-        }
-        return cell;
-    }
+    //endregion
 }

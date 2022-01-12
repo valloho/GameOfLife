@@ -15,11 +15,9 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class StartscreenController implements Initializable {
-
+public class StartscreenController implements Initializable
+{
     @FXML
     private Group group;
     @FXML
@@ -65,91 +63,12 @@ public class StartscreenController implements Initializable {
     @FXML
     private MenuItem colorRed;
 
-
-    // Grid variables
-    private int temp_gridSizeX = 50;
-    private int temp_gridSizeY = 30;
-    private Cell[][] cellGrid;
-
-    // Cell variables
-    private float temp_cellSize = 10;
-    private Color currentColor = Color.BLACK;
-
-    // Game management variables
+    /**
+     * Manager Variables
+     */
+    SaveLoad saveLoadManager = new SaveLoad();
+    CellManager cellManager = new CellManager();
     private boolean playing;
-    private Timer timer;
-    private int gameSpeed = 1000;
-
-    //Initialize the game by creating a grid containing all the cells
-    @FXML
-    public void InitializeGame(Group group, int gridSizeX, int gridSizeY, float cellSize)
-    {
-        // Create a cell grid by looping through the 2 dimensional array and creating new cells
-        cellGrid = new Cell[gridSizeX][gridSizeY];
-
-        for (int x = 0; x < gridSizeX; x++) // Loop through x-axis
-        {
-            for (int y = 0; y < gridSizeY; y++)  // Loop through y-axis
-            {
-                // Create and initialize new cell
-                cellGrid[x][y] = new Cell(cellSize, x * cellSize, y * cellSize, x, y);
-                cellGrid[x][y].setFill(Color.rgb(255, 255, 255));
-                cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
-
-                // Set an event to the cell so the state can be changed by clicking on it
-                cellGrid[x][y].setOnMouseClicked(event -> {
-                    ((Cell) event.getSource()).ChangeState();
-                });
-
-                // Add cell to the main group
-                group.getChildren().add(cellGrid[x][y]);
-            }
-        }
-
-        //createLevel(gridSizeX, gridSizeY);
-    }
-
-    public void SetSpeed(int delayInMS)
-    {
-        gameSpeed = delayInMS;
-    }
-
-    public void SetColor(Color color)
-    {
-        for (Cell[] cells:cellGrid)
-        {
-            for (Cell cell:cells)
-            {
-                cell.SetCellColor(color);
-            }
-        }
-    }
-
-    public void SetGridSize(int gridSizeX, int gridSizeY, float cellSize)
-    {
-        for (Cell[] cellX : cellGrid)
-        {
-            for (Cell cell : cellX)
-            {
-                group.getChildren().remove(cell);
-            }
-        }
-
-        this.temp_gridSizeX = gridSizeX;
-        this.temp_gridSizeY = gridSizeY;
-        this.temp_cellSize = cellSize;
-
-        this.InitializeGame(group, gridSizeX, gridSizeY, cellSize);
-        SetColor(currentColor);
-    }
-
-    public void saveGrid(){
-        SaveLoad.saveGrid("arie",Cell.CellToArray(cellGrid));
-    }
-    public void loadGrid(){
-        cellGrid=Cell.fileToGrid();
-        //maybe run initializeGame game again to draw loaded board
-    }
 
     private void createLevel(int gridSizeY, int gridSizeX)
     {
@@ -160,67 +79,10 @@ public class StartscreenController implements Initializable {
         SaveLoad.createBoard("arie",arr);
     }
 
-    public void OnPlay()
-    {
-        if (playing)
-        {
-            //Stop playing
-            this.playing = false;
-            playButton.setGraphic(play);
-            timer.cancel();
-            return;
-        }
-
-        //Start playing
-        this.playing = true;
-        playButton.setGraphic(pause);
-        timer = new Timer();
-        timer.schedule(new TimerTask(){
-            @Override
-            public void run(){
-                OnNextFrame();
-            }
-        },gameSpeed, gameSpeed);
-    }
-
-    // Jump to the next frame by calculating and setting the cells next state
-    public void OnNextFrame()
-    {
-        //Calculate New Cell States
-        for (Cell[] cellX : cellGrid)
-        {
-            for (Cell cell : cellX)
-            {
-                cell.CalculateNewState(cellGrid, temp_gridSizeX, temp_gridSizeY);
-            }
-        }
-
-        //Set New Cell States
-        for (Cell[] cellX : cellGrid)
-        {
-            for (Cell cell : cellX)
-            {
-                cell.SetNewState();
-            }
-        }
-    }
-
-    public void OnPreviousFrame()
-    {
-        //Calculate New Cell States
-        for (Cell[] cellX : cellGrid)
-        {
-            for (Cell cell : cellX)
-            {
-                cell.SetLastState();
-            }
-        }
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        InitializeGame(group, temp_gridSizeX, temp_gridSizeY, temp_cellSize);
+        cellManager.InitializeGame(group);
 
         //Exit Icon
         exit.setOnMouseClicked(event -> {
@@ -268,55 +130,63 @@ public class StartscreenController implements Initializable {
 
         //Gridsize Menu
         grid50_30.setOnAction(event -> {
-            SetGridSize(50,30, 10);
+            cellManager.ResetGrid(group, 50,30, 10);
         });
         grid25_15.setOnAction(event -> {
-            SetGridSize(25,15, 20);
+            cellManager.ResetGrid(group, 25,15, 20);
         });
 
         //Speed Menu
         speed1.setOnAction(event -> {
-            SetSpeed(1000);
+            cellManager.SetSpeed(1000);
         });
         speed0_5.setOnAction(event -> {
-            SetSpeed(500);
+            cellManager.SetSpeed(500);
         });
         speed0_1.setOnAction(event -> {
-            SetSpeed(100);
+            cellManager.SetSpeed(100);
         });
 
         //Color Menu
         colorBlack.setOnAction(event -> {
-            this.currentColor = Color.BLACK;
-            SetColor(Color.BLACK);
+            cellManager.SetColor(Color.BLACK);
         });
         colorBlue.setOnAction(event -> {
-            this.currentColor = Color.BLUE;
-            SetColor(Color.BLUE);
+            cellManager.SetColor(Color.BLUE);
         });
         colorGreen.setOnAction(event -> {
-            this.currentColor = Color.GREEN;
-            SetColor(Color.GREEN);
+            cellManager.SetColor(Color.GREEN);
         });
         colorRed.setOnAction(event -> {
-            this.currentColor = Color.RED;
-            SetColor(Color.RED);
+            cellManager.SetColor(Color.RED);
         });
 
         //Save
         saveButton.setOnMouseClicked(event -> {
-            saveGrid();
+            //saveLoadManager.saveGrid("arie",Cell.CellToArray(cellManager.GetCellGrid()));
         });
 
         //Load
         loadButton.setOnMouseClicked(event -> {
-            loadGrid();
+            //loadGrid();
         });
 
         //Play|Pause Button
         playButton.setGraphic(play);
-        playButton.setOnMouseClicked(event -> {
-            OnPlay();
+        playButton.setOnMouseClicked(event ->
+        {
+            if (playing)
+            {
+                cellManager.OnPause();
+                playButton.setGraphic(pause);
+                this.playing = false;
+            }
+            else
+            {
+                cellManager.OnPlay();
+                playButton.setGraphic(play);
+                this.playing = true;
+            }
         });
 
         //Next Generation
@@ -325,7 +195,7 @@ public class StartscreenController implements Initializable {
             {
                 return;
             }
-            OnNextFrame();
+            cellManager.OnNextFrame();
         });
 
         //Previous Generation
@@ -334,7 +204,7 @@ public class StartscreenController implements Initializable {
             {
                 return;
             }
-            OnPreviousFrame();
+            cellManager.OnPreviousFrame();
         });
     }
 }
