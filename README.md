@@ -4,7 +4,7 @@ The *Game of Life* is a cellular automaton devised by the British mathematician 
 
 
 ## Rules
-The *Game of Life* is a **two-dimensional grid of square cells**, each of which is in one of two possible states, *live or dead*, (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours (adjacent cells). After each step in the game, the following *rules* apply: 
+Furthermore, the *Game of Life* is a **two-dimensional grid of square cells**, each of which is in one of two possible states, *live or dead*, (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours (adjacent cells). After each step in the game, the following *rules* apply: 
 
 * Any live cell with fewer than two live neighbours dies, i.e. underpopulation.
 
@@ -29,11 +29,12 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 
 # More details about our project
 ## Technology Used
-* IntelliJ IDEA (Integrated development environment 
+* IntelliJ IDEA (Integrated development environment) 
 * Java 8
 * Gradle (build tool)
 * JavaFX (for the GUI)
-   * JavaFX SceneBuilder (visual layout tool)
+   * JavaFX SceneBuilder (visual layout tool, downloaded, right mouse click on startscreen.fxml -> open in SceneBuilder)
+     This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
 
 ## How to start our game
 ### Step 1:
@@ -66,5 +67,21 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*
    * Now click on the *Play Button* to start the game and watch how the cells change. The *Play Button* will change to a *Pause Button*. If you would like to see only a single next generation, press the *Forward Button*. If you would like to see the previous generation, press the *Back Button*.
    * To pause the game, press the *Pause Button*
+
+## Classes, Files, Images
+* Classes
+  * GameOfLifeApp          (includes main method)
+  * Cell                   (defines the cell state, color etc.)
+  * SaveLoad               (creates a txt file -> arie.txt to save and load arrays)
+  * ArrayConverter
+  * StartscreenController (to control Scene Settings, linked with fxml file)
+* Files 
+   * arie.txt
+   * startscreen.fxml
+   * styles.css (format settings of scenes)
+   * images (import from external sources, used in SceneBuilder)
+
+Our code includes detailed comments. This should make it easier for you to understand all implemented methods, created variables etc. 
+
 
 
