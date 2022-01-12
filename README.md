@@ -7,9 +7,13 @@ The *Game of Life* is a cellular automaton devised by the British mathematician 
 The *Game of Life* is a **two-dimensional grid of square cells**, each of which is in one of two possible states, *live or dead*, (or populated and unpopulated, respectively). Every cell interacts with its eight neighbours (adjacent cells). After each step in the game, the following *rules* apply: 
 
 1. Any live cell with fewer than two live neighbours dies, i.e. underpopulation.
-2. Any live cell with two or three live neighbours lives on to the next generation.
-3. Any live cell with more than three live neighbours dies, i.e. overpopulation.
-4. Any dead cell with exactly three live neighbours becomes a live cell, i.e. reproduction.
+
+
+   <img width="227" alt="Bildschirmfoto 2022-01-12 um 12 03 04" src="https://user-images.githubusercontent.com/92008916/149128846-48707612-7703-4cf5-a51d-762e989cb0c2.png">
+   
+3. Any live cell with two or three live neighbours lives on to the next generation.
+4. Any live cell with more than three live neighbours dies, i.e. overpopulation.
+5. Any dead cell with exactly three live neighbours becomes a live cell, i.e. reproduction.
 
 
 
