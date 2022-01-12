@@ -35,3 +35,14 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 
 
 <img width="801" alt="Bildschirmfoto 2022-01-12 um 11 41 08" src="https://user-images.githubusercontent.com/92008916/149126323-b28f4481-e9b2-4740-ab19-fe8538b45a47.png">
+
+* After you see this window (previous Screenshot), you have the opportunity to make some personal settings by clicking on ***Menu***:
+
+   
+   - **Gridsize** - choose between two different grid sizes (50x30, 25x15)
+   - **Speed** - choose how fast you want the cells to change from one generation to the next generation (1sec, 0.5sec, 0.1sec)
+   - **Color** - choose your favourite color for the cells (black, blue, green, red)
+   - **Load**
+   - **Save**
+
+
