@@ -69,7 +69,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    - **Load**
    - **Save**
    
-   !!! Attention: The settings *Gridsize 25x15*, *Load* and *Save* still need to be implemented in the game !!!
+   !!! Attention: *Load* and *Save* still need to be implemented in the game !!!
    
    Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
    
@@ -89,7 +89,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 * Files 
    * arie.txt
    * startscreen.fxml
-   * styles.css (format settings of scenes)
+   * styles.css (stylesheet; format settings of scenes)
    * images (import from external sources, used in SceneBuilder)
 
 Our code includes detailed comments. This should make it easier for you to understand all implemented methods, created variables etc. 
