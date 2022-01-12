@@ -89,7 +89,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 * Files 
    * arie.txt
    * startscreen.fxml
-   * styles.css (format settings of scenes)
+   * styles.css (stylesheet; format settings of scenes)
    * images (import from external sources, used in SceneBuilder)
 
 Our code includes detailed comments. This should make it easier for you to understand all implemented methods, created variables etc. 
