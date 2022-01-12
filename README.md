@@ -27,7 +27,7 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 
 # More details about our project
 ## How to start our game
-* After you have copied our repository link you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
+* After you have copied our repository link in IntelliJ you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
 <img width="357" alt="Bildschirmfoto 2022-01-12 um 11 53 41" src="https://user-images.githubusercontent.com/92008916/149127862-6cb2f2d4-5f45-4849-83b6-8061516ebd50.png">
 
 
@@ -44,5 +44,9 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
    - **Color** - choose your favourite color for the cells (black, blue, green, red)
    - **Load**
    - **Save**
+   
+   -> The settings *Gridsize 25x15*, *Load* and *Save* still need to be implemented in the game!
+   
+   Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
 
 
