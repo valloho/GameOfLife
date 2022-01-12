@@ -27,14 +27,15 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 
 
 
+
+
 # More details about our project
 ## Technology Used
 * IntelliJ IDEA (Integrated development environment) 
 * Java 8
 * Gradle (build tool)
 * JavaFX (for the GUI)
-   * JavaFX SceneBuilder (visual layout tool) 
-     This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
+   * JavaFX SceneBuilder (visual layout tool). This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
      
      To connect SceneBuilder with IntelliJ you have to:
      - Download SceneBuilder 
@@ -76,9 +77,9 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 ## Classes, Files, Images
 * Classes
   * GameOfLifeApp          (includes main method)
-  * Cell                   (defines the cell state, color etc.)
+  * Cell                   (defines the cell state, depending on the rules,  color settings etc.)
   * SaveLoad               (creates a txt file -> arie.txt to save and load arrays)
-  * ArrayConverter
+  * ArrayConverter         (2D Arrays)
   * StartscreenController (to control Scene Settings, linked with fxml file)
 * Files 
    * arie.txt
