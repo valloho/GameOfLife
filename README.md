@@ -15,3 +15,5 @@ The *Game of Life* is a **two-dimensional grid of square cells**, each of which 
 
 ### Source
 Further information regarding [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) and its origin.
+
+<img width="801" alt="Bildschirmfoto 2022-01-12 um 11 41 08" src="https://user-images.githubusercontent.com/92008916/149126323-b28f4481-e9b2-4740-ab19-fe8538b45a47.png">
