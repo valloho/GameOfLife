@@ -18,7 +18,8 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 
 # More details about our project
 ## How to start our game
-* After you have copied our repository link you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run".
+* After you have copied our repository link you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
+<img width="357" alt="Bildschirmfoto 2022-01-12 um 11 53 41" src="https://user-images.githubusercontent.com/92008916/149127862-6cb2f2d4-5f45-4849-83b6-8061516ebd50.png">
 
 
 * Now you can play our fabulous game!
