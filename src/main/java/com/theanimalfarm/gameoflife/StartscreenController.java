@@ -73,6 +73,7 @@ public class StartscreenController implements Initializable {
 
     // Cell variables
     private float temp_cellSize = 10;
+    private Color currentColor = Color.BLACK;
 
     // Game management variables
     private boolean playing;
@@ -134,7 +135,12 @@ public class StartscreenController implements Initializable {
             }
         }
 
+        this.temp_gridSizeX = gridSizeX;
+        this.temp_gridSizeY = gridSizeY;
+        this.temp_cellSize = cellSize;
+
         this.InitializeGame(group, gridSizeX, gridSizeY, cellSize);
+        SetColor(currentColor);
     }
 
     public void saveGrid(){
@@ -244,6 +250,7 @@ public class StartscreenController implements Initializable {
                 menuClose.setVisible(true);
             });
         });
+
         menuClose.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.5));
@@ -280,15 +287,19 @@ public class StartscreenController implements Initializable {
 
         //Color Menu
         colorBlack.setOnAction(event -> {
+            this.currentColor = Color.BLACK;
             SetColor(Color.BLACK);
         });
         colorBlue.setOnAction(event -> {
+            this.currentColor = Color.BLUE;
             SetColor(Color.BLUE);
         });
         colorGreen.setOnAction(event -> {
+            this.currentColor = Color.GREEN;
             SetColor(Color.GREEN);
         });
         colorRed.setOnAction(event -> {
+            this.currentColor = Color.RED;
             SetColor(Color.RED);
         });
 
