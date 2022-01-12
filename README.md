@@ -25,7 +25,16 @@ The *Game of Life* is a **two-dimensional grid of square cells**, each of which 
 ### Source
 Further information regarding [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life) and its origin.
 
+
+
 # More details about our project
+## Technology Used
+* IntelliJ IDEA (Integrated development environment 
+* Java 8
+* Gradle (build tool)
+* JavaFX (for the GUI)
+   * JavaFX SceneBuilder (visual layout tool)
+
 ## How to start our game
 ### Step 1:
 After you have copied our repository link in IntelliJ you have to run our game by clicking "Gradle" -> "Tasks" -> "Application" -> "Run"
@@ -55,6 +64,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 ### Step 3:
 
    * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*
-   * Now click on the *Play Button* to start the game and watch how the cells change. If you would like to see only a single next generation, press the *Forward Button*. If you would like to see the previous generation, press the *Back Button*.
+   * Now click on the *Play Button* to start the game and watch how the cells change. The *Play Button* will change to a *Pause Button*. If you would like to see only a single next generation, press the *Forward Button*. If you would like to see the previous generation, press the *Back Button*.
+   * To pause the game, press the *Pause Button*
 
 
