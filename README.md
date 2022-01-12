@@ -35,6 +35,7 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 * JavaFX (for the GUI)
    * JavaFX SceneBuilder (visual layout tool) 
      This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
+     
      To connect SceneBuilder with IntelliJ you have to:
      - Download SceneBuilder 
      - IntelliJ -> Settings(Einstellungen/Preferences) -> Languages & Frameworks -> JavaFX -> Path to SceneBuilder (which you have just downladed) -> Apply -> OK
