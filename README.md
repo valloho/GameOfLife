@@ -8,12 +8,15 @@ The *Game of Life* is a **two-dimensional grid of square cells**, each of which 
 
 * Any live cell with fewer than two live neighbours dies, i.e. underpopulation.
 
-<img width="227" alt="Bildschirmfoto 2022-01-12 um 12 03 04" src="https://user-images.githubusercontent.com/92008916/149128846-48707612-7703-4cf5-a51d-762e989cb0c2.png">
+
+   <img width="227" alt="Bildschirmfoto 2022-01-12 um 12 03 04" src="https://user-images.githubusercontent.com/92008916/149128846-48707612-7703-4cf5-a51d-762e989cb0c2.png">
    
 * Any live cell with two or three live neighbours lives on to the next generation.
+
+   <img width="215" alt="Bildschirmfoto 2022-01-12 um 12 03 23" src="https://user-images.githubusercontent.com/92008916/149130913-31dfd8fd-6c35-4e5c-aec4-9b6a6cf007bf.png">
 * Any live cell with more than three live neighbours dies, i.e. overpopulation.
 
-<img width="220" alt="Bildschirmfoto 2022-01-12 um 12 03 14" src="https://user-images.githubusercontent.com/92008916/149129631-6be8feb7-174b-454e-89d1-3794628ec0b6.png">
+   <img width="220" alt="Bildschirmfoto 2022-01-12 um 12 03 14" src="https://user-images.githubusercontent.com/92008916/149129631-6be8feb7-174b-454e-89d1-3794628ec0b6.png">
 * Any dead cell with exactly three live neighbours becomes a live cell, i.e. reproduction.
 
 
