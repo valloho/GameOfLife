@@ -33,8 +33,12 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 * Java 8
 * Gradle (build tool)
 * JavaFX (for the GUI)
-   * JavaFX SceneBuilder (visual layout tool, downloaded, right mouse click on startscreen.fxml -> open in SceneBuilder)
+   * JavaFX SceneBuilder (visual layout tool) 
      This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
+     To connect SceneBuilder with IntelliJ you have to:
+     - Download SceneBuilder 
+     - IntelliJ -> Settings(Einstellungen/Preferences) -> Languages & Frameworks -> JavaFX -> Path to SceneBuilder (which you have just downladed) -> Apply -> OK
+     - Right mouse click on fxml.file (necessary for JavaFX) -> Open in SceneBuilder
 
 ## How to start our game
 ### Step 1:
@@ -58,7 +62,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    - **Load**
    - **Save**
    
-   -> Attention: The settings *Gridsize 25x15*, *Load* and *Save* still need to be implemented in the game!
+   !!! Attention: The settings *Gridsize 25x15*, *Load* and *Save* still need to be implemented in the game !!!
    
    Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
    
