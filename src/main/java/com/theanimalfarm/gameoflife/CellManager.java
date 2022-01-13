@@ -41,6 +41,16 @@ public class CellManager
     {
         return cellGrid;
     }
+
+    public int GetGridSizeX()
+    {
+        return temp_gridSizeX;
+    }
+
+    public int GetGridSizeY()
+    {
+        return temp_gridSizeY;
+    }
     //endregion
 
     //region SETTER ----------------------------------------------------------------------------------------------------
@@ -93,6 +103,33 @@ public class CellManager
 
         this.InitializeGame(group);
         SetColor(currentColor);
+    }
+
+    /**
+     * Set the state of the cells to a specific boolean[][] array
+     * @param cellGridStates
+     */
+    public void SetCellState(Cell[][] cellGridStates)
+    {
+        if (cellGridStates.length != cellGrid.length || cellGridStates.length == 0)
+        {
+            System.out.println("The size x of the parameter is either 0 or not identical to the current grid size x");
+            return;
+        }
+
+        if (cellGridStates[0].length != cellGrid[0].length)
+        {
+            System.out.println("The size y of the parameter is not identical to the current grid size y");
+            return;
+        }
+
+        for (int x = 0; x < cellGridStates.length; x++)
+        {
+            for (int y = 0; y < cellGridStates[x].length; y++)
+            {
+                cellGrid[x][y].SetSpecificState(cellGridStates[x][y].GetState());
+            }
+        }
     }
     //endregion
 

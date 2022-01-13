@@ -3,14 +3,21 @@ package com.theanimalfarm.gameoflife;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ArrayConverter {
-    public static int[][] listTo2D(ArrayList<Integer> list, int xSize, int ySize) {
+public class ArrayConverter
+{
+    public static int[][] listTo2D(ArrayList<Integer> list, int xSize, int ySize)
+    {
         int[][] twoDArray = new int[xSize][ySize];
 
-        for (int i = 0; i < twoDArray.length; i++) {
-            for (int j = 0; j < twoDArray[i].length; j++) {
-                int index = i * xSize + j;
-                twoDArray[i][j] = list.get(index);
+        for (int i = 0; i < twoDArray.length; i++)
+        {
+            for (int j = 0; j < twoDArray[i].length; j++)
+            {
+                int index = j * xSize + i;
+                if (index <xSize*ySize)
+                {
+                    twoDArray[i][j] = list.get(index);
+                }
             }
         }
         return twoDArray;

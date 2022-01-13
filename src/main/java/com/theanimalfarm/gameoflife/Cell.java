@@ -108,6 +108,16 @@ public class Cell extends Rectangle
         alive = newState;
         ChangeGraphic(alive);
     }
+
+    /**
+     * Set the state of a cell to a specific state
+     * @param state
+     */
+    public void SetSpecificState(boolean state)
+    {
+        newState = state;
+        SetNewState();
+    }
     //endregion
 
     //region PUBLIC METHODS --------------------------------------------------------------------------------------------

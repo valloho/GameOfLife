@@ -66,23 +66,19 @@ public class StartscreenController implements Initializable
     /**
      * Manager Variables
      */
-    SaveLoad saveLoadManager = new SaveLoad();
+    SaveLoadManager saveLoadManager = new SaveLoadManager();
     CellManager cellManager = new CellManager();
     private boolean playing;
-
-    private void createLevel(int gridSizeY, int gridSizeX)
-    {
-        int[] arr = new int[gridSizeY*gridSizeX];
-//        for(int i = 0 ;i < arr.length; i++){
-//            arr[i] = 0;
-//        }
-        SaveLoad.createBoard("arie",arr);
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        //Initialize CellManager
         cellManager.InitializeGame(group);
+
+        //Initialize SaveLoadManager
+        int[] arr = new int[cellManager.GetGridSizeX()* cellManager.GetGridSizeY()];
+        saveLoadManager.createBoard("saveGame",arr);
 
         //Exit Icon
         exit.setOnMouseClicked(event -> {
@@ -163,12 +159,12 @@ public class StartscreenController implements Initializable
 
         //Save
         saveButton.setOnMouseClicked(event -> {
-            //saveLoadManager.saveGrid("arie",Cell.CellToArray(cellManager.GetCellGrid()));
+            saveLoadManager.SaveGame(this.cellManager.GetCellGrid());
         });
 
         //Load
         loadButton.setOnMouseClicked(event -> {
-            //loadGrid();
+            saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY());
         });
 
         //Play|Pause Button
