@@ -37,7 +37,7 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 # More details about our project
 ## Technology Used
 * IntelliJ IDEA (Integrated development environment) 
-* Java 8
+* Java 
 * Gradle (build tool)
 * JavaFX (for the GUI)
    * JavaFX SceneBuilder (visual layout tool). This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
