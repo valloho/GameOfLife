@@ -69,7 +69,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    - **Load**
    - **Save**
    
-   !!! Attention: *Load* and *Save* still need to be implemented in the game !!!
+   !!! Attention: the function *Load* still needs to be implemented in the game !!!
    
    Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
    
