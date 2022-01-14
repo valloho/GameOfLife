@@ -83,11 +83,14 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 * Classes
   * GameOfLifeApp          (includes main method)
   * Cell                   (defines the cell state, depending on the rules,  color settings etc.)
+  * CellManager
   * SaveLoad               (creates a txt file -> arie.txt to save and load arrays)
+  * SaveLoadManager
   * ArrayConverter         (2D Arrays)
   * StartscreenController (to control Scene Settings, linked with fxml file)
 * Files 
    * arie.txt
+   * saveGame.txt
    * startscreen.fxml
    * styles.css (stylesheet; format settings of scenes)
    * images (import from external sources, used in SceneBuilder)
