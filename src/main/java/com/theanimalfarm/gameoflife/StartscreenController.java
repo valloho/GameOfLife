@@ -174,13 +174,13 @@ public class StartscreenController implements Initializable
             if (playing)
             {
                 cellManager.OnPause();
-                playButton.setGraphic(pause);
+                playButton.setGraphic(play);
                 this.playing = false;
             }
             else
             {
                 cellManager.OnPlay();
-                playButton.setGraphic(play);
+                playButton.setGraphic(pause);
                 this.playing = true;
             }
         });
