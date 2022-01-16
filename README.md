@@ -37,7 +37,7 @@ Further information regarding [Conway's Game of Life](https://en.wikipedia.org/w
 # More details about our project
 ## Technology Used
 * IntelliJ IDEA (Integrated development environment) 
-* Java 8
+* Java 
 * Gradle (build tool)
 * JavaFX (for the GUI)
    * JavaFX SceneBuilder (visual layout tool). This is where you can download [SceneBuilder](https://gluonhq.com/products/scene-builder/)
@@ -69,7 +69,7 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    - **Load**
    - **Save**
    
-   !!! Attention: *Load* and *Save* still need to be implemented in the game !!!
+   !!! Attention: the function *Load* still needs to be implemented in the game !!!
    
    Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
    
@@ -83,11 +83,14 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 * Classes
   * GameOfLifeApp          (includes main method)
   * Cell                   (defines the cell state, depending on the rules,  color settings etc.)
+  * CellManager
   * SaveLoad               (creates a txt file -> arie.txt to save and load arrays)
+  * SaveLoadManager
   * ArrayConverter         (2D Arrays)
   * StartscreenController (to control Scene Settings, linked with fxml file)
 * Files 
    * arie.txt
+   * saveGame.txt
    * startscreen.fxml
    * styles.css (stylesheet; format settings of scenes)
    * images (import from external sources, used in SceneBuilder)

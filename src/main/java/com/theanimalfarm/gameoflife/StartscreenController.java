@@ -164,7 +164,7 @@ public class StartscreenController implements Initializable
 
         //Load
         loadButton.setOnMouseClicked(event -> {
-            saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY());
+            cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
         });
 
         //Play|Pause Button

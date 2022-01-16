@@ -109,7 +109,7 @@ public class CellManager
      * Set the state of the cells to a specific boolean[][] array
      * @param cellGridStates
      */
-    public void SetCellState(Cell[][] cellGridStates)
+    public void SetCellState(boolean[][] cellGridStates)
     {
         if (cellGridStates.length != cellGrid.length || cellGridStates.length == 0)
         {
@@ -127,7 +127,7 @@ public class CellManager
         {
             for (int y = 0; y < cellGridStates[x].length; y++)
             {
-                cellGrid[x][y].SetSpecificState(cellGridStates[x][y].GetState());
+                cellGrid[x][y].SetSpecificState(cellGridStates[x][y]);
             }
         }
     }
