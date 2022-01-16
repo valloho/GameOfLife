@@ -92,7 +92,7 @@ public class StartscreenController implements Initializable
         });
 
         //Menu - Slider
-        slider.setTranslateX(-250);
+        slider.setTranslateX(-252);
         menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
             slide.setDuration(Duration.seconds(0.5));
@@ -101,7 +101,7 @@ public class StartscreenController implements Initializable
             slide.setToX(0);
             slide.play();
 
-            slider.setTranslateX(-250);
+            slider.setTranslateX(-252);
 
             slide.setOnFinished(event1 -> {
                 menu.setVisible(false);
@@ -114,7 +114,7 @@ public class StartscreenController implements Initializable
             slide.setDuration(Duration.seconds(0.5));
             slide.setNode(slider);
 
-            slide.setToX(-250);
+            slide.setToX(-252);
             slide.play();
 
             slider.setTranslateX(0);
@@ -148,13 +148,13 @@ public class StartscreenController implements Initializable
             cellManager.SetColor(Color.BLACK);
         });
         colorBlue.setOnAction(event -> {
-            cellManager.SetColor(Color.BLUE);
+            cellManager.SetColor(Color.web("#177f97"));
         });
         colorGreen.setOnAction(event -> {
-            cellManager.SetColor(Color.GREEN);
+            cellManager.SetColor(Color.web("#348c3b"));
         });
         colorRed.setOnAction(event -> {
-            cellManager.SetColor(Color.RED);
+            cellManager.SetColor(Color.web("#631c13"));
         });
 
         //Save
@@ -174,13 +174,13 @@ public class StartscreenController implements Initializable
             if (playing)
             {
                 cellManager.OnPause();
-                playButton.setGraphic(pause);
+                playButton.setGraphic(play);
                 this.playing = false;
             }
             else
             {
                 cellManager.OnPlay();
-                playButton.setGraphic(play);
+                playButton.setGraphic(pause);
                 this.playing = true;
             }
         });
