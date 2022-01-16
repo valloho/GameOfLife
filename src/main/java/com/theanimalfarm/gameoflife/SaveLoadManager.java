@@ -100,30 +100,31 @@ public class SaveLoadManager
      * @param intGrid
      * @return
      */
-    private Cell[][] IntToCell(int[][] intGrid)
+    private boolean[][] IntToCell(int[][] intGrid)
     {
-        Cell[][] cell = new Cell[0][];
-
-        if (intGrid != null)
+        if (intGrid.length < 1)
         {
-            cell = new Cell[intGrid.length][intGrid[0].length];
+            return new boolean[0][0];
+        }
 
-            for (int i = 0; i < intGrid.length; i++)
+        boolean[][] cellStates = new boolean[intGrid.length][intGrid[0].length];
+
+        for (int i = 0; i < intGrid.length; i++)
+        {
+            for (int j = 0 ; j < intGrid[i].length;j++)
             {
-                for (int j = 0 ; j < intGrid[i].length;j++)
+                if(intGrid[i][j] == 1)
                 {
-                    if(intGrid[i][j] == 1)
-                    {
-                        cell[i][j].SetSpecificState(true);
-                    }
-                    else
-                    {
-                        cell[i][j].SetSpecificState(false);
-                    }
+                    cellStates[i][j] = true;
+                }
+                else
+                {
+                    cellStates[i][j] = false;
                 }
             }
         }
-        return cell;
+
+        return cellStates;
     }
 
     /**
@@ -184,11 +185,11 @@ public class SaveLoadManager
     /**
      * Load the last saved cell states
      */
-    public Cell[][] LoadGame(int gridSizeX, int gridSizeY)
+    public boolean[][] LoadGame(int gridSizeX, int gridSizeY)
     {
         int[][] intGrid = GetGridFromFile("saveGame", gridSizeX, gridSizeY);
 
-        Cell[][] cellGrid = IntToCell(intGrid);
-        return cellGrid;
+        boolean[][] cellStates = IntToCell(intGrid);
+        return cellStates;
     }
 }
