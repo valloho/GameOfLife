@@ -29,6 +29,7 @@ public class CellManager
      */
     private Timer timer;
     private int gameSpeed = 1000;
+    private boolean playing;
     //endregion
 
     //region GETTER ----------------------------------------------------------------------------------------------------
@@ -62,7 +63,13 @@ public class CellManager
      */
     public void SetSpeed(int delayInMS)
     {
+        System.out.println("Hello");
         gameSpeed = delayInMS;
+        if (playing)
+        {
+            OnPause();
+            OnPlay();
+        }
     }
 
     /**
@@ -169,6 +176,7 @@ public class CellManager
      */
     public void OnPlay()
     {
+        this.playing = true;
         timer = new Timer();
         timer.schedule(new TimerTask(){
             @Override
@@ -183,6 +191,7 @@ public class CellManager
      */
     public void OnPause()
     {
+        this.playing = false;
         timer.cancel();
     }
 
@@ -223,6 +232,15 @@ public class CellManager
                 cell.SetLastState();
             }
         }
+    }
+
+    /**
+     * Kill all cells (set all cells to "dead")
+     */
+    public void ClearCells()
+    {
+        boolean[][] deadCells = new boolean[this.temp_gridSizeX][this.temp_gridSizeY];
+        SetCellState(deadCells);
     }
     //endregion
 }
