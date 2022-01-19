@@ -11,7 +11,11 @@ public class SaveLoadManager
 {
     //region SAVE GAME -------------------------------------------------------------------------------------------------
 
-    //writes a one dimensional integer array to a txt file
+    /**
+     * writes a one dimensional integer array to a txt file
+     * @param file
+     * @param idArray
+     */
     private void writeToFile(File file, int[] idArray)
     {
         try
@@ -29,7 +33,11 @@ public class SaveLoadManager
         }
     }
 
-    // change Cell[][] to int[][]
+    /**
+     * change Cell[][] to int[][]
+     * @param cell
+     * @return
+     */
     private int[][] CellToInt(Cell[][] cell)
     {
         int[][] array = new int[cell.length][cell[0].length];
@@ -45,14 +53,16 @@ public class SaveLoadManager
                 {
                     array[i][j] = 0;
                 }
-                //System.out.println(cell[i][j].GetState());
             }
         }
-
         return array;
     }
 
-    // checks if file exists and calls a method that changes a two-dimensional integer array to a one dimensional integer array
+    /**
+     * checks if file exists and calls a method that changes a two-dimensional integer array to a one dimensional integer array
+     * @param name
+     * @param idArr
+     */
     private void saveGrid(String name,int[][] idArr)
     {
         File gridFile = new File("src/main/resources/" + name + ".txt");
@@ -123,7 +133,6 @@ public class SaveLoadManager
                 }
             }
         }
-
         return cellStates;
     }
 
@@ -156,7 +165,7 @@ public class SaveLoadManager
         File kaine = new File("src/main/resources/" + name + ".txt");
         if (kaine.exists())
         {
-            System.out.println("File " + name + "already exists!");
+            System.out.println("File " + name + " already exists!");
         }
         else
         {
