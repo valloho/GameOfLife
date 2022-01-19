@@ -35,3 +35,19 @@
     -fx-background-color: #0B404C;
     -fx-background-radius: 0 10 10 0;
 }
+
+.clearbutton {
+    -fx-background-color: transparent;
+}
+
+.clearbutton:hover {
+    -fx-text-fill: white;
+}
+
+.clearbutton:focused {
+    -fx-text-fill: #177f97;
+    -fx-background-color: transparent;
+}
+.clearbutton:focused:hover {
+    -fx-text-fill: white;
+}

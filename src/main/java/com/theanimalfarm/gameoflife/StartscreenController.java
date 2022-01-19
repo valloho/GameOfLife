@@ -31,6 +31,8 @@ public class StartscreenController implements Initializable
     @FXML
     private Button loadButton;
     @FXML
+    private Button clearButton;
+    @FXML
     private ImageView pause;
     @FXML
     private ImageView play;
@@ -201,6 +203,11 @@ public class StartscreenController implements Initializable
                 return;
             }
             cellManager.OnPreviousFrame();
+        });
+
+        //Clear Cell Grid
+        clearButton.setOnMouseClicked(event -> {
+            cellManager.ClearCells();
         });
     }
 }
