@@ -82,6 +82,7 @@ public class StartscreenController implements Initializable {
         int[] arr = new int[cellManager.GetGridSizeX()* cellManager.GetGridSizeY()];
         saveLoadManager.createBoard("saveGame",arr);
 
+
         //Exit Icon
         exit.setOnMouseClicked(event -> {
             System.exit(0);
