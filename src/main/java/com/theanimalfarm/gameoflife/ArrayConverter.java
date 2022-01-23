@@ -1,7 +1,6 @@
 package com.theanimalfarm.gameoflife;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ArrayConverter
 {

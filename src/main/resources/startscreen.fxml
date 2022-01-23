@@ -22,7 +22,7 @@
          <top>
             <AnchorPane prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Pane prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: #093039;">
+                  <Pane fx:id="titleBar" prefHeight="25.0" prefWidth="800.0" style="-fx-background-color: #093039;">
                      <children>
                         <ImageView fx:id="min" fitHeight="25.0" fitWidth="25.0" layoutX="744.0" pickOnBounds="true" preserveRatio="true">
                            <image>

@@ -16,8 +16,8 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class StartscreenController implements Initializable
-{
+public class StartscreenController implements Initializable {
+
     @FXML
     private Group group;
     @FXML
