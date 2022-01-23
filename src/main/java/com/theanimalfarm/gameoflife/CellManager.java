@@ -17,6 +17,7 @@ public class CellManager {
     private int temp_gridSizeX = 50;
     private int temp_gridSizeY = 30;
     private Cell[][] cellGrid;
+    private Cell lastSelectedCell;
 
     /**
      * Cell variables
@@ -169,17 +170,21 @@ public class CellManager {
                 cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
 
                 // Set an event to the cell so the state can be changed by clicking on it
-                cellGrid[x][y].setOnMouseClicked(event -> {
-                    ((Cell) event.getSource()).ChangeState();
+                cellGrid[x][y].setOnMousePressed(event -> {
+                    Cell cell = (Cell) (event.getSource());
+                    cell.ChangeState();
+                    lastSelectedCell = cell;
                 });
 
                 // Set event to change the cell state when the mouse is dragged over it
                 cellGrid[x][y].setOnMouseDragEntered( event -> {
-
                     if (event.getSource() instanceof Cell)
                     {
                         Cell cell = (Cell) (event.getSource());
-                        cell.ChangeState();
+                        if (cell != lastSelectedCell)
+                        {
+                            cell.ChangeState();
+                        }
                     }
                 });
 
