@@ -57,7 +57,7 @@ After you have copied our repository link in IntelliJ you have to run our game b
 Now you can play our fabulous game!
 
 
-<img width="801" alt="Bildschirmfoto 2022-01-12 um 11 41 08" src="https://user-images.githubusercontent.com/92008916/149126323-b28f4481-e9b2-4740-ab19-fe8538b45a47.png">
+<img width="802" alt="Bildschirmfoto 2022-01-23 um 11 42 48" src="https://user-images.githubusercontent.com/92008916/150674846-2b1120f7-31dd-4c04-a106-9d72e0fcc371.png">
 
 ### Step 2:
 After you see this window (previous Screenshot), you have the opportunity to make some personal settings by clicking on ***Menu***:
@@ -66,18 +66,18 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    - **Gridsize** - choose between two different grid sizes (50x30, 25x15)
    - **Speed** - choose how fast you want the cells to change from one generation to the next generation (1sec, 0.5sec, 0.1sec)
    - **Color** - choose your favourite color for the cells (black, blue, green, red)
-   - **Load**
-   - **Save**
+   - **Load** - click the button "Load" to load the previously saved cell formation.
+   - **Save** - click the button "Save" to safe the current cell formation of the game.
    
-   !!! Attention: the function *Load* still needs to be implemented in the game !!!
    
    Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
    
 ### Step 3:
 
-   * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*
+   * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*.
    * Now click on the *Play Button* to start the game and watch how the cells change. The *Play Button* will change to a *Pause Button*. If you would like to see only a single next generation, press the *Forward Button*. If you would like to see the previous generation, press the *Back Button*.
-   * To pause the game, press the *Pause Button*
+   * To pause the game, press the *Pause Button*.
+   * Click on the *Clear Button* to remove the current cell formation.
 
 ## Classes, Files, Images
 * Classes
