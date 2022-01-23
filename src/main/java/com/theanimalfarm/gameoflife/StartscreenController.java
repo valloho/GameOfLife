@@ -57,6 +57,8 @@ public class StartscreenController implements Initializable {
     @FXML
     private MenuItem speed0_1;
     @FXML
+    private MenuItem speed0_05;
+    @FXML
     private MenuItem colorBlack;
     @FXML
     private MenuItem colorBlue;
@@ -95,6 +97,9 @@ public class StartscreenController implements Initializable {
         });
 
         //Menu - Slider
+        /**
+         *KEITHAYA | https://www.youtube.com/watch?v=LMl_OZHJYC8 | 07.01.2022
+         */
         slider.setTranslateX(-252);
         menu.setOnMouseClicked(event -> {
             TranslateTransition slide = new TranslateTransition();
@@ -127,7 +132,7 @@ public class StartscreenController implements Initializable {
             });
         });
 
-        //Gridsize Menu
+        //Gridsize Menu Items
         grid50_30.setOnAction(event -> {
             cellManager.ResetGrid(group, 50,30, 10);
         });
@@ -135,7 +140,7 @@ public class StartscreenController implements Initializable {
             cellManager.ResetGrid(group, 25,15, 20);
         });
 
-        //Speed Menu
+        //Speed Menu Items
         speed1.setOnAction(event -> {
             cellManager.SetSpeed(1000);
         });
@@ -145,8 +150,11 @@ public class StartscreenController implements Initializable {
         speed0_1.setOnAction(event -> {
             cellManager.SetSpeed(100);
         });
+        speed0_05.setOnAction(event -> {
+            cellManager.SetSpeed(50);
+        });
 
-        //Color Menu
+        //Color Menu Items
         colorBlack.setOnAction(event -> {
             cellManager.SetColor(Color.BLACK);
         });
@@ -160,12 +168,12 @@ public class StartscreenController implements Initializable {
             cellManager.SetColor(Color.web("#631c13"));
         });
 
-        //Save
+        //Save Game
         saveButton.setOnMouseClicked(event -> {
             saveLoadManager.SaveGame(this.cellManager.GetCellGrid());
         });
 
-        //Load
+        //Load Game
         loadButton.setOnMouseClicked(event -> {
             cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
         });

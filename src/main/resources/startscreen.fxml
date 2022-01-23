@@ -193,6 +193,7 @@
                             <MenuItem fx:id="speed1" mnemonicParsing="false" text="1sec/frame" />
                             <MenuItem fx:id="speed0_5" mnemonicParsing="false" text="0.5sec/frame" />
                               <MenuItem fx:id="speed0_1" mnemonicParsing="false" text="0.1sec/frame" />
+                              <MenuItem fx:id="speed0_05" mnemonicParsing="false" text="0.05sec/frame" />
                           </items>
                            <font>
                               <Font name="Eras Bold ITC" size="14.0" />
