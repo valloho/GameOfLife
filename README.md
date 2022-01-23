@@ -64,13 +64,12 @@ After you see this window (previous Screenshot), you have the opportunity to mak
 
    
    - **Gridsize** - choose between two different grid sizes (50x30, 25x15)
-   - **Speed** - choose how fast you want the cells to change from one generation to the next generation (1sec, 0.5sec, 0.1sec)
+   - **Speed** - choose how fast you want the cells to change from one generation to the next generation (1sec/frame, 0.5sec/frame, 0.1sec/frame, 0.05sec/frame)
    - **Color** - choose your favourite color for the cells (black, blue, green, red)
    - **Load** - click the button "Load" to load the previously saved cell formation.
    - **Save** - click the button "Save" to safe the current cell formation of the game.
    
-   
-   Idea of "Save" setting: after you press the Save Button, the cells which are "alive" will be shown in the arie.txt file as a 1, cells which are "dead" as a 0.
+  
    
 ### Step 3:
 
