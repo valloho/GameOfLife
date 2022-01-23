@@ -3,7 +3,6 @@ package com.theanimalfarm.gameoflife;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -169,13 +168,9 @@ public class CellManager {
                 cellGrid[x][y].setFill(Color.rgb(255, 255, 255));
                 cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
 
-                // Set event to change the cell state when it is pressed
-                cellGrid[x][y].setOnMousePressed( event -> {
-                    if (event.getSource() instanceof Cell)
-                    {
-                        Cell cell = (Cell) (event.getSource());
-                        cell.ChangeState();
-                    }
+                // Set an event to the cell so the state can be changed by clicking on it
+                cellGrid[x][y].setOnMouseClicked(event -> {
+                    ((Cell) event.getSource()).ChangeState();
                 });
 
                 // Set event to change the cell state when the mouse is dragged over it

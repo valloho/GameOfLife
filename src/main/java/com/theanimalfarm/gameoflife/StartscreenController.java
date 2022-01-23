@@ -1,6 +1,7 @@
 package com.theanimalfarm.gameoflife;
 
 import javafx.animation.TranslateTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -8,11 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -21,6 +23,8 @@ public class StartscreenController implements Initializable {
     @FXML
     private Group group;
     @FXML
+    private Pane titleBar;
+    @FXML
     private Button playButton;
     @FXML
     private Button nextButton;
@@ -28,8 +32,6 @@ public class StartscreenController implements Initializable {
     private Button backButton;
     @FXML
     private Button saveButton;
-    @FXML
-    private Button loadButton;
     @FXML
     private Button clearButton;
     @FXML
@@ -66,6 +68,14 @@ public class StartscreenController implements Initializable {
     private MenuItem colorGreen;
     @FXML
     private MenuItem colorRed;
+    @FXML
+    private MenuItem load50x30;
+    @FXML
+    private MenuItem load25x15;
+    @FXML
+    private MenuItem loadPreset1;
+    @FXML
+    private MenuItem loadPreset2;
 
     /**
      * Manager Variables
@@ -73,6 +83,8 @@ public class StartscreenController implements Initializable {
     SaveLoadManager saveLoadManager = new SaveLoadManager();
     CellManager cellManager = new CellManager();
     private boolean playing;
+    //Variables required for window drag
+    private double xOffset, yOffset;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -82,8 +94,8 @@ public class StartscreenController implements Initializable {
 
         //Initialize SaveLoadManager
         int[] arr = new int[cellManager.GetGridSizeX()* cellManager.GetGridSizeY()];
-        saveLoadManager.createBoard("saveGame",arr);
-
+        saveLoadManager.createBoard("saveGame 50x30",arr);
+        saveLoadManager.createBoard("saveGame 25x15",arr);
 
         //Exit Icon
         exit.setOnMouseClicked(event -> {
@@ -174,7 +186,7 @@ public class StartscreenController implements Initializable {
         });
 
         //Load Game
-        loadButton.setOnMouseClicked(event -> {
+        load50x30.setOnAction(event -> {
             cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
         });
 
@@ -217,6 +229,25 @@ public class StartscreenController implements Initializable {
         //Clear Cell Grid
         clearButton.setOnMouseClicked(event -> {
             cellManager.ClearCells();
+        });
+
+        /**
+         * Amos Chepchieng | https://medium.com/@keeptoo/making-a-borderless-javafx-window-movable-f7855eb33a51 | 23.01.2022
+         */
+        titleBar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+        titleBar.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) titleBar.getScene().getWindow();
+                stage.setX(event.getScreenX() - xOffset);
+                stage.setY(event.getScreenY() - yOffset);
+            }
         });
     }
 }

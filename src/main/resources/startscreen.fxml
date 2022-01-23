@@ -216,17 +216,20 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </MenuButton>
-                        <Button fx:id="loadButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
-                           <padding>
-                              <Insets left="20.0" />
-                           </padding>
+                        <MenuButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="230.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
+                           <items>
+                              <MenuItem fx:id="load50x30" mnemonicParsing="false" text="50x30 Save" />
+                              <MenuItem fx:id="load25x15" mnemonicParsing="false" text="25x15 Save" />
+                              <MenuItem fx:id="loadPreset1" mnemonicParsing="false" text="Preset x" />
+                              <MenuItem fx:id="loadPreset2" mnemonicParsing="false" text="Preset y" />
+                           </items>
                            <font>
                               <Font name="Eras Bold ITC" size="14.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                        </Button>
+                        </MenuButton>
                         <Button fx:id="saveButton" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" stylesheets="@styles.css" text="SAVE" textFill="#177f97">
                            <VBox.margin>
                               <Insets />
