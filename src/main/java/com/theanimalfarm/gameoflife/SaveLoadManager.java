@@ -187,17 +187,24 @@ public class SaveLoadManager
     public void SaveGame(Cell[][] cellGrid)
     {
         int[][] intGrid = CellToInt(cellGrid);
-
-        saveGrid("saveGame", intGrid);
+        if(intGrid.length == 50){
+            saveGrid("saveGame 50x30", intGrid);
+        }
+        else if(intGrid.length == 25){
+            saveGrid("saveGame 25x15", intGrid);
+        }
     }
 
     /**
      * Load the last saved cell states
      */
-    public boolean[][] LoadGame(int gridSizeX, int gridSizeY)
-    {
-        int[][] intGrid = GetGridFromFile("saveGame", gridSizeX, gridSizeY);
-
+    public boolean[][] LoadGame(int gridSizeX, int gridSizeY) {
+        int[][] intGrid = new int[gridSizeX][gridSizeY];
+        if ((gridSizeX * gridSizeY) == 1500) {
+            intGrid = GetGridFromFile("saveGame 50x30", gridSizeX, gridSizeY);
+        } else if ((gridSizeX * gridSizeY) == 375) {
+            intGrid = GetGridFromFile("saveGame 25x15", gridSizeX, gridSizeY);
+        }
         boolean[][] cellStates = IntToCell(intGrid);
         return cellStates;
     }
