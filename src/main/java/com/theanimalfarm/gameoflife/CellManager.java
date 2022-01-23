@@ -3,7 +3,6 @@ package com.theanimalfarm.gameoflife;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -153,7 +152,7 @@ public class CellManager {
 
                 // Set an event to the cell so the state can be changed by clicking on it
                 cellGrid[x][y].setOnMouseClicked(event -> {
-                    ((Cell) event.getSource()).ChangeState();
+                   ((Cell) event.getSource()).ChangeState();
                 });
 
                 // Add cell to the main group
