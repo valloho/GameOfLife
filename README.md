@@ -74,9 +74,10 @@ After you see this window (previous Screenshot), you have the opportunity to mak
    
 ### Step 3:
 
-   * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*
+   * Click on a random number of cells (but be aware of the rules to create a lot of next generations) to turn them *alive*.
    * Now click on the *Play Button* to start the game and watch how the cells change. The *Play Button* will change to a *Pause Button*. If you would like to see only a single next generation, press the *Forward Button*. If you would like to see the previous generation, press the *Back Button*.
-   * To pause the game, press the *Pause Button*
+   * To pause the game, press the *Pause Button*.
+   * Click on the *Clear Button* to remove the current cell formation.
 
 ## Classes, Files, Images
 * Classes
