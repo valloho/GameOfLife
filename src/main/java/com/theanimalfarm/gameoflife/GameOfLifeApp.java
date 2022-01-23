@@ -42,8 +42,8 @@ public class GameOfLifeApp extends Application{
         root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                primaryStage.setX(event.getScreenX() - xOffset);
-                primaryStage.setY(event.getScreenY() - yOffset);
+                //primaryStage.setX(event.getScreenX() - xOffset);
+                //primaryStage.setY(event.getScreenY() - yOffset);
             }
         });
 

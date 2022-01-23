@@ -40,15 +40,18 @@ public class CellManager {
      *
      * @return
      */
-    public Cell[][] GetCellGrid() {
+    public Cell[][] GetCellGrid()
+    {
         return cellGrid;
     }
 
-    public int GetGridSizeX() {
+    public int GetGridSizeX()
+    {
         return temp_gridSizeX;
     }
 
-    public int GetGridSizeY() {
+    public int GetGridSizeY()
+    {
         return temp_gridSizeY;
     }
     //endregion
@@ -61,10 +64,13 @@ public class CellManager {
      *
      * @param delayInMS
      */
-    public void SetSpeed(int delayInMS) {
+    public void SetSpeed(int delayInMS)
+    {
         System.out.println("Hello");
         gameSpeed = delayInMS;
-        if (playing) {
+
+        if (playing)
+        {
             OnPause();
             OnPlay();
         }
@@ -75,9 +81,12 @@ public class CellManager {
      *
      * @param color
      */
-    public void SetColor(Color color) {
-        for (Cell[] cells : cellGrid) {
-            for (Cell cell : cells) {
+    public void SetColor(Color color)
+    {
+        for (Cell[] cells : cellGrid)
+        {
+            for (Cell cell : cells)
+            {
                 cell.SetCellColor(color);
             }
         }
@@ -91,9 +100,12 @@ public class CellManager {
      * @param gridSizeY
      * @param cellSize
      */
-    public void ResetGrid(Group group, int gridSizeX, int gridSizeY, float cellSize) {
-        for (Cell[] cellX : cellGrid) {
-            for (Cell cell : cellX) {
+    public void ResetGrid(Group group, int gridSizeX, int gridSizeY, float cellSize)
+    {
+        for (Cell[] cellX : cellGrid)
+        {
+            for (Cell cell : cellX)
+            {
                 group.getChildren().remove(cell);
             }
         }
@@ -111,19 +123,24 @@ public class CellManager {
      *
      * @param cellGridStates
      */
-    public void SetCellState(boolean[][] cellGridStates) {
-        if (cellGridStates.length != cellGrid.length || cellGridStates.length == 0) {
+    public void SetCellState(boolean[][] cellGridStates)
+    {
+        if (cellGridStates.length != cellGrid.length || cellGridStates.length == 0)
+        {
             System.out.println("The size x of the parameter is either 0 or not identical to the current grid size x");
             return;
         }
 
-        if (cellGridStates[0].length != cellGrid[0].length) {
+        if (cellGridStates[0].length != cellGrid[0].length)
+        {
             System.out.println("The size y of the parameter is not identical to the current grid size y");
             return;
         }
 
-        for (int x = 0; x < cellGridStates.length; x++) {
-            for (int y = 0; y < cellGridStates[x].length; y++) {
+        for (int x = 0; x < cellGridStates.length; x++)
+        {
+            for (int y = 0; y < cellGridStates[x].length; y++)
+            {
                 cellGrid[x][y].SetSpecificState(cellGridStates[x][y]);
             }
         }
@@ -138,7 +155,8 @@ public class CellManager {
      * @param group
      */
     @FXML
-    public void InitializeGame(Group group) {
+    public void InitializeGame(Group group)
+    {
         // Create a cell grid by looping through the 2 dimensional array and creating new cells
         cellGrid = new Cell[temp_gridSizeX][temp_gridSizeY];
 
@@ -151,26 +169,47 @@ public class CellManager {
                 cellGrid[x][y].setFill(Color.rgb(255, 255, 255));
                 cellGrid[x][y].setStroke(Color.rgb(0, 0, 0));
 
-                // Set an event to the cell so the state can be changed by clicking on it
-                cellGrid[x][y].setOnMouseClicked(event -> {
-                    ((Cell) event.getSource()).ChangeState();
+                // Set event to change the cell state when it is pressed
+                cellGrid[x][y].setOnMousePressed( event -> {
+                    if (event.getSource() instanceof Cell)
+                    {
+                        Cell cell = (Cell) (event.getSource());
+                        cell.ChangeState();
+                    }
                 });
 
-                // Add cell to the main group
+                // Set event to change the cell state when the mouse is dragged over it
+                cellGrid[x][y].setOnMouseDragEntered( event -> {
+
+                    if (event.getSource() instanceof Cell)
+                    {
+                        Cell cell = (Cell) (event.getSource());
+                        cell.ChangeState();
+                    }
+                });
+
+                // Add the cell to the group
                 group.getChildren().add(cellGrid[x][y]);
             }
         }
+
+        // Start full drag of the group so the cell states can be changed
+        group.setOnDragDetected(e -> group.startFullDrag());
     }
 
     /**
      * Start playing by creating a loop that calls OnNextFrame every few seconds
      */
-    public void OnPlay() {
+    public void OnPlay()
+    {
         this.playing = true;
         timer = new Timer();
-        timer.schedule(new TimerTask() {
+
+        timer.schedule(new TimerTask()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 OnNextFrame();
             }
         }, gameSpeed, gameSpeed);
@@ -179,7 +218,8 @@ public class CellManager {
     /**
      * Stop playing by pausing the timer
      */
-    public void OnPause() {
+    public void OnPause()
+    {
         this.playing = false;
         timer.cancel();
     }
@@ -187,17 +227,22 @@ public class CellManager {
     /**
      * Jump to the next frame by calculating and setting the cells next state
      */
-    public void OnNextFrame() {
+    public void OnNextFrame()
+    {
         //Calculate New Cell States
-        for (Cell[] cellX : cellGrid) {
-            for (Cell cell : cellX) {
+        for (Cell[] cellX : cellGrid)
+        {
+            for (Cell cell : cellX)
+            {
                 cell.CalculateNewState(cellGrid, temp_gridSizeX, temp_gridSizeY);
             }
         }
 
         //Set New Cell States
-        for (Cell[] cellX : cellGrid) {
-            for (Cell cell : cellX) {
+        for (Cell[] cellX : cellGrid)
+        {
+            for (Cell cell : cellX)
+            {
                 cell.SetNewState();
             }
         }
@@ -206,10 +251,13 @@ public class CellManager {
     /**
      * Jump to the previous frame by setting the last saved cell state
      */
-    public void OnPreviousFrame() {
+    public void OnPreviousFrame()
+    {
         //Calculate New Cell States
-        for (Cell[] cellX : cellGrid) {
-            for (Cell cell : cellX) {
+        for (Cell[] cellX : cellGrid)
+        {
+            for (Cell cell : cellX)
+            {
                 cell.SetLastState();
             }
         }
@@ -218,7 +266,8 @@ public class CellManager {
     /**
      * Kill all cells (set all cells to "dead")
      */
-    public void ClearCells() {
+    public void ClearCells()
+    {
         boolean[][] deadCells = new boolean[this.temp_gridSizeX][this.temp_gridSizeY];
         SetCellState(deadCells);
     }

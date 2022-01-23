@@ -1,4 +1,6 @@
 package com.theanimalfarm.gameoflife;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import java.util.Stack;
@@ -27,7 +29,7 @@ public class Cell extends Rectangle
      * Last cell states
      */
     private Stack<Boolean> lastCellStates = new Stack<>();
-    private static int maxCellStack = 20;
+    private static int maxCellStack = 100;
     //endregion
 
     //region CONSTRUCTOR -----------------------------------------------------------------------------------------------
@@ -195,4 +197,10 @@ public class Cell extends Rectangle
         this.newState = aliveNeighbourCells == 3; // A dead cell with exactly 3 neighbors is reborn
     }
     //endregion
+
+    @Override
+    public String toString()
+    {
+        return "Cell:" + cellIndexX + ":" +cellIndexY;
+    }
 }
