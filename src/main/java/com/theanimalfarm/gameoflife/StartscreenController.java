@@ -85,6 +85,7 @@ public class StartscreenController implements Initializable {
     private boolean playing;
     //Variables required for window drag
     private double xOffset, yOffset;
+    private String file;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -188,16 +189,34 @@ public class StartscreenController implements Initializable {
         //Load Game
         load50x30.setOnAction(event -> {
             if(cellManager.GetGridSizeX() == 50){
-                cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+                file = "saveGame 50x30";
+                cellManager.SetCellState(saveLoadManager.LoadGame(file,cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
             }else{
                 System.out.println("Not able to print a 50x30 grid on a 25x15 grid!");
             }
         });
         load25x15.setOnAction(event -> {
+            file ="saveGame 25x15";
             if(cellManager.GetGridSizeX() == 25){
-                cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+                cellManager.SetCellState(saveLoadManager.LoadGame(file,cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
             }else{
                 System.out.println("Not able to print a 25x15 grid on a 50x30 grid!");
+            }
+        });
+        loadPreset1.setOnAction(event -> {
+            file = "preset1";
+            if(cellManager.GetGridSizeX() == 50){
+                cellManager.SetCellState(saveLoadManager.LoadGame(file,cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+            }else{
+                System.out.println("Not able to print a 50x30 grid on a 25x15 grid!");
+            }
+        });
+        loadPreset2.setOnAction(event -> {
+            file = "preset2";
+            if(cellManager.GetGridSizeX() == 50){
+                cellManager.SetCellState(saveLoadManager.LoadGame(file,cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+            }else{
+                System.out.println("Not able to print a 50x30 grid on a 25x15 grid!");
             }
         });
 
