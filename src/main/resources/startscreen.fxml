@@ -218,10 +218,12 @@
                         </MenuButton>
                         <MenuButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="230.0" mnemonicParsing="false" popupSide="RIGHT" prefHeight="40.0" prefWidth="250.0" styleClass="menu-bar" stylesheets="@styles.css" text="LOAD" textFill="#177f97">
                            <items>
-                              <MenuItem fx:id="load50x30" mnemonicParsing="false" text="50x30 Save" />
-                              <MenuItem fx:id="load25x15" mnemonicParsing="false" text="25x15 Save" />
-                              <MenuItem fx:id="loadPreset1" mnemonicParsing="false" text="Preset x" />
-                              <MenuItem fx:id="loadPreset2" mnemonicParsing="false" text="Preset y" />
+                              <MenuItem fx:id="load50x30" mnemonicParsing="false" text="Load | 50x30" />
+                              <MenuItem fx:id="load25x15" mnemonicParsing="false" text="Load | 25x15" />
+                              <MenuItem fx:id="loadRockets" mnemonicParsing="false" text="Rockets | 50x30" />
+                              <MenuItem fx:id="loadSpider" mnemonicParsing="false" text="Spider | 50x30" />
+                              <MenuItem fx:id="loadFlower" mnemonicParsing="false" text="Flower | 25x15" />
+                              <MenuItem fx:id="loadFun" mnemonicParsing="false" text="Fun Stuff | 25x15" />
                            </items>
                            <font>
                               <Font name="Eras Bold ITC" size="14.0" />
