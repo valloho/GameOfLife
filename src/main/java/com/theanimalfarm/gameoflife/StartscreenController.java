@@ -187,7 +187,18 @@ public class StartscreenController implements Initializable {
 
         //Load Game
         load50x30.setOnAction(event -> {
-            cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+            if(cellManager.GetGridSizeX() == 50){
+                cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+            }else{
+                System.out.println("Not able to print a 50x30 grid on a 25x15 grid!");
+            }
+        });
+        load25x15.setOnAction(event -> {
+            if(cellManager.GetGridSizeX() == 25){
+                cellManager.SetCellState(saveLoadManager.LoadGame(cellManager.GetGridSizeX(), cellManager.GetGridSizeY()));
+            }else{
+                System.out.println("Not able to print a 25x15 grid on a 50x30 grid!");
+            }
         });
 
         //Play|Pause Button
