@@ -66,7 +66,6 @@ public class CellManager {
      */
     public void SetSpeed(int delayInMS)
     {
-        System.out.println("Hello");
         gameSpeed = delayInMS;
 
         if (playing)
